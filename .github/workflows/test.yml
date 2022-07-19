@@ -15,13 +15,13 @@ jobs:
           environment-file: api/allen.yaml
           cache-downloads: true
 
-        - uses: actions-rs/toolchain@v1
-          with:
-            profile: minimal
-            toolchain: stable
-            override: true
-        - uses: messense/maturin-action@v1
-          with:
-            maturin-version: latest
-            command: build
-            args: --release
+      - uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+          override: true
+      - uses: messense/maturin-action@v1
+        with:
+          maturin-version: latest
+          command: build
+          args: --release
