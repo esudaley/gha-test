@@ -7,4 +7,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: pwd
-        run: pwd
+        run: |
+          pwd
+          ls
+      - name: Checkout
+      uses: actions/checkout@v3
+      - name: Install Conda environment with Micromamba
+      uses: mamba-org/provision-with-micromamba@main
+      with:
+        environment-file: api/allen.yaml
