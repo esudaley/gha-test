@@ -28,11 +28,9 @@ jobs:
             target/
           key: ${{ runner.os }}-cargo-${{ hashFiles('hello_cargo/Cargo.lock') }}
 
-      - name: try using cargo first
-        run: cargo build --release --manifest-path hello_cargo/Cargo.toml
-      
       - name: run maturin
         run: |
+          micromamba activate allen
           maturin build --release --manifest-path hello_cargo/Cargo.toml
       # - uses: messense/maturin-action@v1
       #   with:
