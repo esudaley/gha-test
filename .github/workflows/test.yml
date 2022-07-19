@@ -30,4 +30,7 @@ jobs:
 
       - name: python verison
         run: python -V
+
+      - name: python verison
+        run: find / -name ".cargo"
         
