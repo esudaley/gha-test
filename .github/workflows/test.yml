@@ -13,3 +13,4 @@ jobs:
         uses: mamba-org/provision-with-micromamba@main
         with:
           environment-file: api/allen.yaml
+          cache-downloads: true
