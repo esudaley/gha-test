@@ -12,11 +12,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       
-      - name: Install Conda environment with Micromamba
-        uses: mamba-org/provision-with-micromamba@main
-        with:
-          environment-file: api/allen.yaml
-          cache-downloads: true
+      # - name: Install Conda environment with Micromamba
+      #   uses: mamba-org/provision-with-micromamba@main
+      #   with:
+      #     environment-file: api/allen.yaml
+      #     cache-downloads: true
 
       - uses: actions/cache@v3
         with:
@@ -26,16 +26,16 @@ jobs:
             ~/.cargo/registry/cache/
             ~/.cargo/git/db/
             target/
-          key: ${{ runner.os }}-cargo-${{ hashFiles('hello_cargo/Cargo.toml') }}
+          key: ${{ runner.os }}-cargo-${{ hashFiles('hello_cargo/Cargo.lock') }}
 
       - name: try using cargo first
-        run: cargo build --release --manifest-path hello_cargo/Cargo.lock
+        run: cargo build --release --manifest-path hello_cargo/Cargo.toml
       
       - uses: messense/maturin-action@v1
         with:
           maturin-version: latest
           command: build
-          args: --release --manifest-path hello_cargo/Cargo.lock
+          args: --release --manifest-path hello_cargo/Cargo.toml
 
       - name: python verison
         run: python -V
