@@ -28,11 +28,13 @@ jobs:
             target/
           key: ${{ runner.os }}-cargo-${{ hashFiles('hello_cargo/Cargo.toml') }}
 
-
+      - name: try using cargo first
+        run: cargo build --release --manifest-path hello_cargo/Cargo.toml
+      
       - uses: messense/maturin-action@v1
         with:
           maturin-version: latest
-          command: develop
+          command: cargo build
           args: --release --manifest-path hello_cargo/Cargo.toml
 
       - name: python verison
