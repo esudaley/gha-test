@@ -28,9 +28,10 @@ jobs:
             target/
           key: ${{ runner.os }}-cargo-${{ hashFiles('hello_cargo/Cargo.lock') }}
 
-      - name: run maturin
+      - name: Ensure env is activated
         run: |
           micromamba activate allen
+          rustup default nightly
           maturin build --release --manifest-path hello_cargo/Cargo.toml
       # - uses: messense/maturin-action@v1
       #   with:
