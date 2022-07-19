@@ -3,9 +3,6 @@ name = "allen"
 version = "0.1.0"
 edition = "2021"
 
-[lib]
-name = "allen"
-crate-type = ["cdylib"]
 
 [dependencies]
 pyo3 = { version = "0.16.5", features = ["extension-module"] }
