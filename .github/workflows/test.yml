@@ -32,7 +32,9 @@ jobs:
         run: cargo build --release --manifest-path hello_cargo/Cargo.toml
       
       - name: run maturin
-        run: maturin --release --manifest-path hello_cargo/Cargo.toml
+        run: |
+          pip install maturin
+          maturin --release --manifest-path hello_cargo/Cargo.toml
       # - uses: messense/maturin-action@v1
       #   with:
       #     maturin-version: latest
