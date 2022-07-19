@@ -21,8 +21,8 @@ jobs:
           toolchain: stable
           override: true
       - uses: messense/maturin-action@v1
-        working-directory: api
         with:
+          working-directory: api
           maturin-version: latest
           command: build
           args: --release
