@@ -19,7 +19,7 @@ jobs:
           cache-downloads: true
 
       - name: env
-        run: micromamba env
+        run: micromamba env list
         
       - uses: actions-rs/toolchain@v1
         with:
