@@ -18,18 +18,16 @@ jobs:
           environment-file: api/allen.yaml
           cache-downloads: true
 
-      - name: env
-        run: ls ~
+      # - name: env
+      #   run: ls ~
         
-      - uses: messense/maturin-action@v1
-        with:
-          working-directory: api
-          maturin-version: latest
-          command: build
-          args: --release --manifest-path hello_cargo/Cargo.toml
+      # - uses: messense/maturin-action@v1
+      #   with:
+      #     working-directory: api
+      #     maturin-version: latest
+      #     command: build
+      #     args: --release --manifest-path hello_cargo/Cargo.toml
 
-      - name: env
-        run: |
-          ls ~/runners
-          ls ~/work
+      - name: python verison
+        run: python -V
         
