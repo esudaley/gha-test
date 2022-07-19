@@ -32,7 +32,7 @@ jobs:
       - uses: messense/maturin-action@v1
         with:
           maturin-version: latest
-          command: build
+          command: cargo build
           args: --release --manifest-path hello_cargo/Cargo.toml
 
       - name: python verison
