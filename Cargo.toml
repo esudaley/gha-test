@@ -1,0 +1,21 @@
+[package]
+name = "allen"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "alfred"
+crate-type = ["cdylib"]
+
+[dependencies]
+pyo3 = { version = "0.16.5", features = ["extension-module"] }
+pyo3-log = "0.6.0"
+
+
+
+# extra stuff
+rayon = "1.5.3"
+itertools = "0.10.3"
+
+[build-dependencies]
+pkg-config = "0.3.25"
