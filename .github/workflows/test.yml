@@ -32,7 +32,6 @@ jobs:
         run: |
           micromamba activate allen
           rustup default nightly
-          cargo build --manifest-path hello_cargo/Cargo.toml
           maturin build --manifest-path hello_cargo/Cargo.toml
       # - uses: messense/maturin-action@v1
       #   with:
