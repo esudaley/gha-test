@@ -6,11 +6,6 @@ jobs:
   test-gha:
     runs-on: ubuntu-latest
     steps:
-      - name: pwd
-        run: |
-          pwd
-          ls
-      
       - name: Checkout
         uses: actions/checkout@v3
       
