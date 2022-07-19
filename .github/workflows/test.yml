@@ -18,7 +18,7 @@ jobs:
           environment-file: api/allen.yaml
           cache-downloads: true
 
-       - uses: actions/cache@v3
+      - uses: actions/cache@v3
         with:
           path: |
             ~/.cargo/bin/
@@ -31,7 +31,6 @@ jobs:
 
       - uses: messense/maturin-action@v1
         with:
-          working-directory: api
           maturin-version: latest
           command: build
           args: --release --manifest-path hello_cargo/Cargo.toml
