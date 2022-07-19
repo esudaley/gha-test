@@ -12,11 +12,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       
-      # - name: Install Conda environment with Micromamba
-      #   uses: mamba-org/provision-with-micromamba@main
-      #   with:
-      #     environment-file: api/allen.yaml
-      #     cache-downloads: true
+      - name: Install Conda environment with Micromamba
+        uses: mamba-org/provision-with-micromamba@main
+        with:
+          environment-file: api/allen.yaml
+          cache-downloads: true
 
       - uses: actions/cache@v3
         with:
@@ -33,7 +33,6 @@ jobs:
       
       - name: run maturin
         run: |
-          pip install maturin
           maturin --release --manifest-path hello_cargo/Cargo.toml
       # - uses: messense/maturin-action@v1
       #   with:
