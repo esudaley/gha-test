@@ -29,5 +29,7 @@ jobs:
           args: --release --manifest-path hello_cargo/Cargo.toml
 
       - name: env
-        run: ls ~
+        run: |
+          ls ~/runners
+          ls ~/work
         
