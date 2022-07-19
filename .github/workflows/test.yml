@@ -12,18 +12,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       
-      - name: Install Conda environment with Micromamba
-        uses: mamba-org/provision-with-micromamba@main
-        with:
-          environment-file: api/allen.yaml
-          cache-downloads: true
 
       - name: env
-        run: micromamba env list
+        run: ls ~
         
-      - uses: messense/maturin-action@v1
-        with:
-          working-directory: api
-          maturin-version: latest
-          command: build
-          args: --release --manifest-path api/Cargo.toml
