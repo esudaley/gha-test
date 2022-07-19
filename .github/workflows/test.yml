@@ -26,4 +26,4 @@ jobs:
           working-directory: api
           maturin-version: latest
           command: build
-          args: --release
+          args: --release --manifest-path api/Cargo.toml
