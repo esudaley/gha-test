@@ -8,3 +8,38 @@ edition = "2021"
 [dependencies]
 arrow2 = "0.12.0"
 rand = "0.8.3"
+pyo3 = { version = "0.16.5", features = ["extension-module"] }
+pyo3-log = "0.6.0"
+
+# polars stuff
+polars = { version = "0.22.8", features = [
+    "simd",
+    "lazy",
+    "avx512",
+    "performant",
+    "is_in",
+    "dtype-full",
+    # "ndarray",
+] }
+polars-arrow = "0.22.7"
+
+# geographic stuff
+geos = { version = "8.1.0", features = ["geo", "static", "v3_6_0"] }
+geographiclib-rs = "0.2.1"
+
+# extra stuff
+rayon = "1.5.3"
+itertools = "0.10.3"
+itertools-num = "0.1.3"
+hashbrown = "0.12.1"
+ordered-float = "3.0.0"
+log = "0.4.17"
+# ndarray = "0.15.4"
+# ndarray-rand = "0.14.0"
+# linfa = "0.6.0"
+# linfa-clustering = "0.6.0"
+# linfa-nn = "0.6.0"
+# rand_xoshiro = "0.6.0"
+
+[build-dependencies]
+pkg-config = "0.3.25"
