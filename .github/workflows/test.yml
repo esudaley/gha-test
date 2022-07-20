@@ -27,15 +27,16 @@ jobs:
       #       ~/.cargo/git/db/
       #       target/
       #     key: ${{ runner.os }}-cargo-${{ hashFiles('hello_cargo/Cargo.lock') }}
+      - name: Activate env
+        run: micromamba activate alfred
+
       - name: Select nightly
         run: rustup default nightly
         
       - uses: Swatinem/rust-cache@v2
 
       - name: Maturin build
-        run: |
-          micromamba activate allen
-          maturin build --release --manifest-path Cargo.toml
+        run: maturin build --release --manifest-path Cargo.toml
       # - uses: messense/maturin-action@v1
       #   with:
       #     maturin-version: latest
