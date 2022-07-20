@@ -27,8 +27,8 @@ jobs:
       - uses: Swatinem/rust-cache@v1
         cache-on-failure: true
 
-      - name: just cargo build
-        run: cargo build --manifest-path Cargo.toml
+      # - name: just cargo build
+      #   run: cargo build --manifest-path Cargo.toml
 
       - name: Maturin build
         run: maturin build --manifest-path Cargo.toml
