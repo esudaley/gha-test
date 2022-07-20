@@ -24,7 +24,7 @@ jobs:
       - name: Select nightly
         run: rustup default nightly
         
-      - uses: Swatinem/rust-cache@v1
+      - uses: Swatinem/rust-cache@v1.4.0 
         with:
           cache-on-failure: true
 
