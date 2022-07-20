@@ -7,7 +7,7 @@ dependencies:
   - maturin>=0.12.15,<0.13
   # - pip
   # polars stuff
-  - pyarrow>=7.0,<8.0
+  # - pyarrow>=7.0,<8.0
   # - pip:
   #   - "polars==0.13.46"
   #   # testing

@@ -21,8 +21,8 @@ jobs:
       - name: Activate env
         run: micromamba activate allen
 
-      - name: Select nightly
-        run: rustup default nightly
+      # - name: Select nightly
+      #   run: rustup default nightly
         
       - uses: Swatinem/rust-cache@v1
 
