@@ -46,7 +46,7 @@ use pyo3::types::{PyFloat, PyInt};
 
 use pyo3::PyObject;
 
-use error handling and don't panic! on everything
+// use error handling and don't panic! on everything
 
 use std::borrow::Cow;
 
