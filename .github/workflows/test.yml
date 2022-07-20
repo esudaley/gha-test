@@ -25,6 +25,7 @@ jobs:
         run: rustup default nightly
         
       - uses: Swatinem/rust-cache@v1
+        cache-on-failure: ""
 
       - name: just cargo build
         run: cargo build --manifest-path Cargo.toml
