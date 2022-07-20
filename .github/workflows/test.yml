@@ -17,6 +17,7 @@ jobs:
         with:
           environment-file: api/allen.yaml
           cache-downloads: true
+          cache-env: true
  
       - name: Activate env
         run: micromamba activate allen
@@ -26,6 +27,7 @@ jobs:
         
       - uses: Swatinem/rust-cache@v1.4.0 
         with:
+          working-directory: 
           cache-on-failure: true
 
       - name: just cargo build

@@ -1,7 +1,7 @@
 // #[pyfunction]
-// fn abc() {
-//     println!("Hello, world!");
-// }
+fn main() {
+    println!("Hello, world!");
+}
 
 // #[pymodule]
 // #[pyo3(name = "allen")]
