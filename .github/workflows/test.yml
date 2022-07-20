@@ -18,15 +18,16 @@ jobs:
           environment-file: api/allen.yaml
           cache-downloads: true
 
-      - uses: actions/cache@v3
-        with:
-          path: |
-            ~/.cargo/bin/
-            ~/.cargo/registry/index/
-            ~/.cargo/registry/cache/
-            ~/.cargo/git/db/
-            target/
-          key: ${{ runner.os }}-cargo-${{ hashFiles('hello_cargo/Cargo.lock') }}
+      # - uses: actions/cache@v3
+      #   with:
+      #     path: |
+      #       ~/.cargo/bin/
+      #       ~/.cargo/registry/index/
+      #       ~/.cargo/registry/cache/
+      #       ~/.cargo/git/db/
+      #       target/
+      #     key: ${{ runner.os }}-cargo-${{ hashFiles('hello_cargo/Cargo.lock') }}
+      - uses: Swatinem/rust-cache@v2
 
       - name: Ensure env is activated
         run: |
