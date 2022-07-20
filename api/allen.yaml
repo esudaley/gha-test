@@ -29,4 +29,4 @@ dependencies:
   - dill>=0.3.5.1,<1.0        # serialization for redis
   - rich                      # "rich" terminal
   - beartype>=0.10.4,<1.0     # runtime type checking
-  - scikit-learn>=1.1.1,< 2.0 # for clustering
+  - scikit-learn>=1.1.1,< 2.0 # for clusteringg
