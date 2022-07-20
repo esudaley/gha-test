@@ -2,6 +2,10 @@ name: test-workflow
 
 on: push
 
+env:
+  CARGO_INCREMENTAL: 0
+  OPT_LEVEL, DEBUG: 0
+
 defaults:
   run:
     shell: bash -l {0}
