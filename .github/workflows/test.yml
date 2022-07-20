@@ -18,22 +18,13 @@ jobs:
           environment-file: api/allen.yaml
           cache-downloads: true
  
-      # - uses: actions/cache@v3
-      #   with:
-      #     path: | 
-      #       ~/.cargo/bin/
-      #       ~/.cargo/registry/index/
-      #       ~/.cargo/registry/cache/
-      #       ~/.cargo/git/db/
-      #       target/
-      #     key: ${{ runner.os }}-cargo-${{ hashFiles('hello_cargo/Cargo.lock') }}
       - name: Activate env
         run: micromamba activate allen
 
       - name: Select nightly
         run: rustup default nightly
         
-      - uses: Swatinem/rust-cache@v1
+      - uses: Swatinem/rust-cache@v2
 
       - name: just cargo build
         run: cargo build --manifest-path Cargo.toml
