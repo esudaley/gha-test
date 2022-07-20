@@ -46,15 +46,9 @@ use pyo3::types::{PyFloat, PyInt};
 
 use pyo3::PyObject;
 
-// use error handling and don't panic! on everything
 
 use std::borrow::Cow;
 
-used in loop to determine step size in angle
-
-use &&
-
-use it
 
 use geos::Geometry as GGeometry;
 
