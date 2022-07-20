@@ -30,13 +30,13 @@ jobs:
       - name: Activate env
         run: micromamba activate allen
 
-      - name: Select nightly
-        run: rustup default nightly
+      # - name: Select nightly
+      #   run: rustup default nightly
         
       - uses: Swatinem/rust-cache@v2
 
       - name: Maturin build
-        run: maturin build --manifest-path Cargo.toml
+        run: maturin build --manifest-path Cargo.lock
       # - uses: messense/maturin-action@v1
       #   with:
       #     maturin-version: latest
