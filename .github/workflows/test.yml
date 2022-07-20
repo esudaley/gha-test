@@ -43,9 +43,3 @@ jobs:
       #     command: build
       #     args: --release --manifest-path hello_cargo/Cargo.toml
 
-      - name: python verison
-        run: python -V
-
-      - name: find cargo
-        run: ls ~/.cargo
-        
