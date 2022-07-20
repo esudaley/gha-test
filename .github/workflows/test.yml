@@ -39,7 +39,7 @@ jobs:
         run: cargo build
 
       - name: Maturin build
-        run: maturin build
+        run: maturin build --manifest-path Cargo.toml
       # - uses: messense/maturin-action@v1
       #   with:
       #     maturin-version: latest
