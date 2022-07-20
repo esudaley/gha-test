@@ -5,11 +5,6 @@ edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
-[dependencies]
-arrow2 = "0.12.0"
-rand = "0.8.3"
-
-
 [lib]
 name = "allen"
 crate-type = ["cdylib"]
@@ -17,6 +12,8 @@ crate-type = ["cdylib"]
 [dependencies]
 pyo3 = { version = "0.16.5", features = ["extension-module"] }
 pyo3-log = "0.6.0"
+arrow2 = "0.12.0"
+rand = "0.8.3"
 
 # polars stuff
 polars = { version = "0.22.8", features = [
