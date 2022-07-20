@@ -35,7 +35,7 @@ jobs:
       - name: Maturin build
         run: |
           micromamba activate allen
-          maturin build --release --manifest-path hello_cargo/Cargo.toml
+          maturin build --release --manifest-path Cargo.toml
       # - uses: messense/maturin-action@v1
       #   with:
       #     maturin-version: latest
