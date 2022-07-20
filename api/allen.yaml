@@ -1,4 +1,4 @@
-name: alfred
+name: allen
 channels:
   - conda-forge
 dependencies:
