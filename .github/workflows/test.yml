@@ -29,11 +29,10 @@ jobs:
       #     key: ${{ runner.os }}-cargo-${{ hashFiles('hello_cargo/Cargo.lock') }}
       - uses: Swatinem/rust-cache@v2
 
-      - name: Ensure env is activated
+      - name: Maturin build
         run: |
           micromamba activate allen
           rustup default nightly
-          cargo build --release --manifest-path hello_cargo/Cargo.toml
           maturin build --release --manifest-path hello_cargo/Cargo.toml
       # - uses: messense/maturin-action@v1
       #   with:
