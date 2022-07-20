@@ -28,7 +28,7 @@ jobs:
       #       target/
       #     key: ${{ runner.os }}-cargo-${{ hashFiles('hello_cargo/Cargo.lock') }}
       - name: Activate env
-        run: micromamba activate alfred
+        run: micromamba activate allen
 
       - name: Select nightly
         run: rustup default nightly
