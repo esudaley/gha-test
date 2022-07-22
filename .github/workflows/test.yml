@@ -28,7 +28,7 @@ jobs:
      
       - name: run redis
         run: | 
-          docker run -p 6379:6379 redis redis-server --appendonly yes --save 60 1 
+          docker run -p 6379:6379 redis redis-server --appendonly yes --save 60 1 &
       
       - name: ps
         run: docker ps
