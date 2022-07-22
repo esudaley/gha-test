@@ -20,6 +20,9 @@ jobs:
         ports:
           # Maps port 6379 on service container to the host
           - 6379:6379
+        options: |
+          appendonly yes
+          save 60 1
     steps:
       - name: Checkout
         uses: actions/checkout@v3
