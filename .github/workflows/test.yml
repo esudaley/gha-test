@@ -29,7 +29,7 @@ jobs:
       - name: run redis
         run: | 
           docker pull redis
-          docker run redis
+          docker create redis
           docker ps
       # - uses: shogo82148/actions-setup-redis@v1
       #   with:
