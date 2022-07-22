@@ -19,7 +19,9 @@ jobs:
       
       - uses: shogo82148/actions-setup-redis@v1
         with:
-          redis-conf: appendonly yes save 60 1
+          redis-conf: |
+            appendonly yes 
+            save 60 1
         
       - name: config
         run: |
