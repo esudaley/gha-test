@@ -19,7 +19,13 @@ jobs:
       
       - uses: shogo82148/actions-setup-redis@v1
         with:
-          redis-conf: appendonly yes
+          redis-conf: appendonly yes save 60 1
+        
+      - name: config
+        run: |
+          redis-cli
+          config get appendonly
+          config get save
 
 
       # - name: Install Conda environment with Micromamba
