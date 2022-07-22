@@ -26,7 +26,8 @@ jobs:
       # - name: Start Redis
       #   run: | 
       #     docker run -p 6379:6379 redis redis-server --appendonly yes --save 60 1 &
-
+      - name: test2
+        run: ls
       - name: test
         run: pwd
         working-directory: gui
