@@ -28,9 +28,9 @@ jobs:
       #     docker run -p 6379:6379 redis redis-server --appendonly yes --save 60 1 &
 
       - name: test
+        run: pwd
         with:
           working-directory: gui
-          run: pwd
       # - name: Install Conda environment with Micromamba
       #   uses: mamba-org/provision-with-micromamba@main
       #   with:
