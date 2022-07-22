@@ -28,9 +28,8 @@ jobs:
      
       - name: run redis
         run: | 
-          docker pull redis
-          docker create redis
-          docker ps
+          docker run -p 6379:6379 redis:latest redis-server --appendonly yes --save 60 1
+
       # - uses: shogo82148/actions-setup-redis@v1
       #   with:
       #     redis-conf: |
