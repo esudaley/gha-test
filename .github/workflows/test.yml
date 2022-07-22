@@ -26,7 +26,7 @@ jobs:
      
       - name: run redis
         run: | 
-          docker exec --name redis redis-cli 
+          docker exec redis redis-cli 
       # - uses: shogo82148/actions-setup-redis@v1
       #   with:
       #     redis-conf: |
