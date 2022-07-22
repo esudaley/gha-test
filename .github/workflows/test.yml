@@ -29,8 +29,7 @@ jobs:
 
       - name: test
         run: pwd
-        with:
-          working-directory: gui
+        working-directory: gui
       # - name: Install Conda environment with Micromamba
       #   uses: mamba-org/provision-with-micromamba@main
       #   with:
