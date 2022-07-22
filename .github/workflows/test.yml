@@ -13,21 +13,27 @@ defaults:
 jobs:
   test-gha:
     runs-on: ubuntu-latest
+    services:
+      redis:
+        image: redis
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      
-      - uses: shogo82148/actions-setup-redis@v1
-        with:
-          redis-conf: |
-            appendonly yes 
-            save 60 1
+     
+      - run: | 
+        redis-server
+        redis-cli ping 
+      # - uses: shogo82148/actions-setup-redis@v1
+      #   with:
+      #     redis-conf: |
+      #       appendonly yes 
+      #       save 60 1
         
-      - name: config
-        run: |
-          redis-cli
-          config get appendonly
-          config get save
+      # - name: config
+      #   run: |
+      #     redis-cli
+      #     config get appendonly
+      #     config get save
 
 
       # - name: Install Conda environment with Micromamba
