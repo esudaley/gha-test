@@ -17,29 +17,34 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       
-      - name: Install Conda environment with Micromamba
-        uses: mamba-org/provision-with-micromamba@main
+      - uses: shogo82148/actions-setup-redis@v1
         with:
-          environment-file: api/allen.yaml
-          cache-downloads: true
-          cache-env: true
+          redis-conf: appendonly yes
+
+
+      # - name: Install Conda environment with Micromamba
+      #   uses: mamba-org/provision-with-micromamba@main
+      #   with:
+      #     environment-file: api/allen.yaml
+      #     cache-downloads: true
+      #     cache-env: true
  
-      - name: Activate env
-        run: micromamba activate allen
+      # - name: Activate env
+      #   run: micromamba activate allen
 
-      - name: Select nightly
-        run: rustup default nightly
+      # - name: Select nightly
+      #   run: rustup default nightly
         
-      - uses: Swatinem/rust-cache@v1.4.0 
-        with:
-          working-directory: 
-          cache-on-failure: true
+      # - uses: Swatinem/rust-cache@v1.4.0 
+      #   with:
+      #     working-directory: 
+      #     cache-on-failure: true
 
-      - name: just cargo build
-        run: cargo build --manifest-path Cargo.toml
+      # - name: just cargo build
+      #   run: cargo build --manifest-path Cargo.toml
 
-      - name: Maturin build
-        run: maturin build --manifest-path Cargo.toml
+      # - name: Maturin build
+      #   run: maturin build --manifest-path Cargo.toml
       # - uses: messense/maturin-action@v1
       #   with:
       #     maturin-version: latest
