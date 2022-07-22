@@ -14,18 +14,20 @@ jobs:
   test-gha:
     runs-on: ubuntu-latest
     
-    services:
-      redis:
-        image: redis
-        ports:
-          # Maps port 6379 on service container to the host
-          - 6379:6379
+    # services:
+    #   redis:
+    #     image: redis
+    #     ports:
+    #       # Maps port 6379 on service container to the host
+    #       - 6379:6379
     steps:
       - name: Checkout
         uses: actions/checkout@v3
      
       - name: run redis
         run: | 
+          docker pull redis:latest
+          docker run redis
           docker ps
       # - uses: shogo82148/actions-setup-redis@v1
       #   with:
