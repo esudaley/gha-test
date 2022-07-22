@@ -20,7 +20,7 @@ jobs:
         ports:
           # Maps port 6379 on service container to the host
           - 6379:6379
-        options: |
+        options: >-
           -a echo hello
     steps:
       - name: Checkout
