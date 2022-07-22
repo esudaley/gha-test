@@ -20,7 +20,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
      
-      - run: | 
+      - name: run redis
+        run: | 
         redis-server
         redis-cli ping 
       # - uses: shogo82148/actions-setup-redis@v1
