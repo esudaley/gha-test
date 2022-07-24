@@ -46,18 +46,18 @@ jobs:
       #     maturin-version: latest
       #     command: build
       #     args: --manifest-path Cargo.toml
-
       - name: Cache node modules
         uses: actions/cache@v2
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-${{ hashFiles('/home/runner/work/alfred/alfred/alfred_gui/package-lock.json') }}
+          key: ${{ runner.os }}-${{ hashFiles('**package-lock.json') }}
 
       - name: Cache Cypress binary
         uses: actions/cache@v2
         with:
           path: ~/.cache/Cypress
-          key: cypress-${{ runner.os }}-cypress-${{ hashFiles}}
+          key: cypress-${{ runner.os }}-cypress-${{ hashFiles('**package.json') }}
+
 
       - name: npm install
         run: npm ci --prefer-offline --no-audit
