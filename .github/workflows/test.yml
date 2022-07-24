@@ -13,36 +13,37 @@ defaults:
 jobs:
   test-gha:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-     
+
       # - name: Start Redis
-      #   run: | 
+      #   run: |
       #     docker run -p 6379:6379 redis redis-server --appendonly yes --save 60 1 &
-     
+
       # - name: Install Conda environment with Micromamba
       #   uses: mamba-org/provision-with-micromamba@main
       #   with:
       #     environment-file: api/allen.yaml
       #     cache-downloads: true
       #     cache-env: true
- 
+
       # - name: Activate env
       #   run: micromamba activate allen
 
-      - uses: Swatinem/rust-cache@v1.4.0 
+      - uses: Swatinem/rust-cache@v1.4.0
         with:
           cache-on-failure: true
-      - name: Install Maturin
-      - run: pip install maturin
+
+      # - name: Install Maturin
+      # - run: pip install maturin
+
+      # - name: Maturin build
+      #   run: maturin build --manifest-path Cargo.toml
       
-      - name: Maturin build
-        run: maturin build --manifest-path Cargo.toml
       - uses: messense/maturin-action@v1
         with:
           maturin-version: latest
           command: build
           args: --release --manifest-path hello_cargo/Cargo.toml
-
