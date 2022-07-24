@@ -57,7 +57,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ~/.cache/Cypress
-          key: cypress-${{ runner.os }}-cypress-${{ hashFiles
+          key: cypress-${{ runner.os }}-cypress-${{ hashFiles}}
 
       - name: npm install
         run: npm ci --prefer-offline --no-audit
