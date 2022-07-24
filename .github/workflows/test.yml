@@ -32,18 +32,34 @@ jobs:
       # - name: Activate env
       #   run: micromamba activate allen
 
-      - uses: Swatinem/rust-cache@v1.4.0
-        with:
-          cache-on-failure: true
+      # - uses: Swatinem/rust-cache@v1.4.0
+      #   with:
+      #     cache-on-failure: true
 
-      # - name: Install Maturin
-      # - run: pip install maturin
+      # # - name: Install Maturin
+      # # - run: pip install maturin
 
-      # - name: Maturin build
-      #   run: maturin build --manifest-path Cargo.toml
+      # # - name: Maturin build
+      # #   run: maturin build --manifest-path Cargo.toml
       
-      - uses: messense/maturin-action@v1
+      # - uses: messense/maturin-action@v1
+      #   with:
+      #     maturin-version: latest
+      #     command: build
+      #     args: --manifest-path Cargo.toml
+
+      - name: Cache node modules
+        uses: actions/cache@v2
         with:
-          maturin-version: latest
-          command: build
-          args: --manifest-path Cargo.toml
+          path: ~/.npm
+          key: ${{ runner.os }}-${{ hashFiles('/home/runner/work/alfred/alfred/alfred_gui/package-lock.json') }}
+
+      - name: Cache Cypress binary
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/Cypress
+          key: cypress-${{ runner.os }}-cypress-${{ hashFiles
+
+      - name: npm install
+        working-directory: alfred_gui
+        run: npm ci --prefer-offline --no-audit
