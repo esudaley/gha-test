@@ -18,19 +18,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
      
-      # - uses: docker://redis
-      #   with:
-      #     entrypoint: /usr/local/bin/redis-server
-      #     args: --appendonly yes --save 60 1 
-
       # - name: Start Redis
       #   run: | 
       #     docker run -p 6379:6379 redis redis-server --appendonly yes --save 60 1 &
-      - name: test2
-        run: ls
-      - name: test
-        run: pwd
-        working-directory: gui
+     
       # - name: Install Conda environment with Micromamba
       #   uses: mamba-org/provision-with-micromamba@main
       #   with:
@@ -41,22 +32,15 @@ jobs:
       # - name: Activate env
       #   run: micromamba activate allen
 
-      # - name: Select nightly
-      #   run: rustup default nightly
-        
-      # - uses: Swatinem/rust-cache@v1.4.0 
-      #   with:
-      #     working-directory: 
-      #     cache-on-failure: true
+      - uses: Swatinem/rust-cache@v1.4.0 
+        with:
+          cache-on-failure: true
 
-      # - name: just cargo build
-      #   run: cargo build --manifest-path Cargo.toml
-
-      # - name: Maturin build
-      #   run: maturin build --manifest-path Cargo.toml
-      # - uses: messense/maturin-action@v1
-      #   with:
-      #     maturin-version: latest
-      #     command: build
-      #     args: --release --manifest-path hello_cargo/Cargo.toml
+      - name: Maturin build
+        run: maturin build --manifest-path Cargo.toml
+      - uses: messense/maturin-action@v1
+        with:
+          maturin-version: latest
+          command: build
+          args: --release --manifest-path hello_cargo/Cargo.toml
 
