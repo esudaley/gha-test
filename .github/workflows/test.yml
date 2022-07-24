@@ -13,7 +13,6 @@ defaults:
 jobs:
   test-gha:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -41,7 +40,7 @@ jobs:
 
       # # - name: Maturin build
       # #   run: maturin build --manifest-path Cargo.toml
-      
+
       # - uses: messense/maturin-action@v1
       #   with:
       #     maturin-version: latest
@@ -61,5 +60,4 @@ jobs:
           key: cypress-${{ runner.os }}-cypress-${{ hashFiles
 
       - name: npm install
-        working-directory: alfred_gui
         run: npm ci --prefer-offline --no-audit
