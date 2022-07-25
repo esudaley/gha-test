@@ -19,11 +19,10 @@ jobs:
   Test-Server:
     runs-on: ubuntu-latest
     steps:
-      - name: PING
+      - name: Update python
         run: |
-          npm install wait-on 
-          wait-on 127.0.0.1:8081
-          curl 127.0.0.1:8081
+          sudo apt update
+          sudo apt install python3.10
       # - name: Start Redis
       #   run: |
       #     docker run -p 6379:6379 redis redis-server --appendonly yes --save 60 1 &
