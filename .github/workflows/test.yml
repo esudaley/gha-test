@@ -11,12 +11,17 @@ defaults:
   run:
     shell: bash -l {0}
 jobs:
-  test-gha:
+  Run-Server:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
-
+        run: npx http-server -y &
+  Test-Server:
+    runs-on: ubuntu-latest
+    needs: Run-Server
+    steps:
+      - name: PING
+        run: curl 127.0.0.1:8081
       # - name: Start Redis
       #   run: |
       #     docker run -p 6379:6379 redis redis-server --appendonly yes --save 60 1 &
@@ -46,18 +51,18 @@ jobs:
       #     maturin-version: latest
       #     command: build
       #     args: --manifest-path Cargo.toml
-      - name: Cache node modules
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-${{ hashFiles('**package-lock.json') }}
+      # - name: Cache node modules
+      #   uses: actions/cache@v2
+      #   with:
+      #     path: ~/.npm
+      #     key: ${{ runner.os }}-${{ hashFiles('**package-lock.json') }}
 
-      - name: Cache Cypress binary
-        uses: actions/cache@v2
-        with:
-          path: ~/.cache/Cypress
-          key: cypress-${{ runner.os }}-cypress-${{ hashFiles('**package.json') }}
+      # - name: Cache Cypress binary
+      #   uses: actions/cache@v2
+      #   with:
+      #     path: ~/.cache/Cypress
+      #     key: cypress-${{ runner.os }}-cypress-${{ hashFiles('**package.json') }}
 
 
-      - name: npm install
-        run: npm ci --prefer-offline --no-audit
+      # - name: npm install
+      #   run: npm ci --prefer-offline --no-audit
