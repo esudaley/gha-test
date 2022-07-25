@@ -18,10 +18,12 @@ jobs:
         run: npx http-server -y &
   Test-Server:
     runs-on: ubuntu-latest
-    needs: Run-Server
     steps:
       - name: PING
-        run: curl 127.0.0.1:8081
+        run: |
+          npm install wait-on 
+          wait-on 127.0.0.1:8081
+          curl 127.0.0.1:8081
       # - name: Start Redis
       #   run: |
       #     docker run -p 6379:6379 redis redis-server --appendonly yes --save 60 1 &
