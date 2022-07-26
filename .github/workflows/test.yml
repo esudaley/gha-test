@@ -11,17 +11,15 @@ defaults:
   run:
     shell: bash -l {0}
 jobs:
-  download-redis:
+  check-diff:
     runs-on: ubuntu-latest
     steps:
-    - name: Start Redis
-      run: >-
-        docker run 
-        -p 6379:6379
-        --pull always
-        redis 
-        redis-server --appendonly yes --save 60 1 &
-  # install-cypress:
+      - uses: actions/checkout@v2
+      - uses: technote-space/get-diff-action@v6
+        with:
+          PATTERNS: '*.txt'
+          RELATIVE: 'api/'
+      - run: echo ${{ env.GIT_DIFF }}
   #   runs-on: ubuntu-latest
   #   steps:
   #     - name: Checkout 
