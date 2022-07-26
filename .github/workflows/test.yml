@@ -19,7 +19,6 @@ jobs:
         with:
           PATTERNS: |
             '*.txt'
-          RELATIVE: 'api/'
       - run: echo ${{ env.GIT_DIFF }}
   #   runs-on: ubuntu-latest
   #   steps:
