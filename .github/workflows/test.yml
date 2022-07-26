@@ -11,18 +11,30 @@ defaults:
   run:
     shell: bash -l {0}
 jobs:
-  Run-Server:
+  install-cypress:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        run: npx http-server -y &
-  Test-Server:
+      - name: Checkout 
+        uses: actions/checkout@v3
+
+      - name: Install Cypress
+        uses: cypress-io/github-action@v2
+        with:
+          install-command: npm ci --prefer-offline --no-audit
+          runTests: false
+
+  run-cypress:
     runs-on: ubuntu-latest
+    needs: [install-cypress]
     steps:
-      - name: Update python
-        run: |
-          sudo apt update
-          sudo apt install python3.10
+      - name: Checkout 
+        uses: actions/checkout@v3
+      
+      - name: Run Cypress
+        uses: cypress-io/github-action@v2
+        with:
+          install: false 
+          
       # - name: Start Redis
       #   run: |
       #     docker run -p 6379:6379 redis redis-server --appendonly yes --save 60 1 &
