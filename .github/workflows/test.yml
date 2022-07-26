@@ -17,10 +17,10 @@ jobs:
     - name: Start Redis
       run: >-
         docker run 
-          -p 6379:6379
-          -pull "always"
-          redis 
-          redis-server --appendonly yes --save 60 1 &
+        -p 6379:6379
+        -pull "always"
+        redis 
+        redis-server --appendonly yes --save 60 1 &
   # install-cypress:
   #   runs-on: ubuntu-latest
   #   steps:
