@@ -17,14 +17,21 @@ jobs:
       - name: Checkout 
         uses: actions/checkout@v3
 
-      - name: Install Cypress
-        uses: cypress-io/github-action@v2
+      - name: Cache node modules
+        uses: actions/cache@v2
         with:
-          install-command: npm ci --prefer-offline --no-audit
-          runTests: false
-          cache-key: cypress-${{ runner.os }}-sudaley-${{ hashFiles('**/package-lock.json') }}
-        env:
-          DEBUG: '@cypress/github-action'
+          path: ~/.npm
+          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Cache Cypress binary
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/Cypress
+          key: cypress-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Install dependencies 
+        run: npm ci --prefer-offline --no-audit
+        working-directory: alfred_gui
 
   run-cypress:
     runs-on: ubuntu-latest
@@ -37,7 +44,17 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ~/.cache/Cypress
-          key: cypress-${{ runner.os }}-sudaley-${{ hashFiles('**/package-lock.json') }}
+          key: cypress-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+      
+      - name: npm install cypress
+        run: npm install cypress --no-save
+
+      - name: Run Cypress tests
+        run: >-
+          npx cypress run 
+        working-directory: alfred_gui 
+
+
           
       # - name: Start Redis
       #   run: |
