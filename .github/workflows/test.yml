@@ -37,7 +37,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ~/.cache/Cypress
-          key: cypress-${{ runner.os }}-sudaley-${{ hashFiles('**/abc.txt') }}
+          key: cypress-${{ runner.os }}-sudaley-${{ hashFiles('*abc.txt') }}
           
       # - name: Start Redis
       #   run: |
