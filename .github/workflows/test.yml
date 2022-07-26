@@ -17,8 +17,9 @@ jobs:
       - uses: actions/checkout@v2
       - uses: technote-space/get-diff-action@v6
         with:
-          PATTERNS: '**'
-          RELATIVE: 'api/'
+          PATTERNS: |
+            '*.py'
+            '*.txt'
       - run: echo ${{ env.GIT_DIFF }}
   #   runs-on: ubuntu-latest
   #   steps:
