@@ -36,7 +36,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ~/.cache/Cypress
-          key: cypress-${{ runner.os }}-${{ hashFiles('**package-lock.json') }}
+          key: cypress-${{ runner.os }}--${runner.arch}-${{ hashFiles('**package-lock.json') }}
           
       # - name: Start Redis
       #   run: |
