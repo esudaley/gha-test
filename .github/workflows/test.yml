@@ -22,7 +22,7 @@ jobs:
         with:
           install-command: npm ci --prefer-offline --no-audit
           runTests: false
-          cache-key: cypress-${{ runner.os }}-sudaley-${{ hashFiles('**package-lock.json') }}
+          cache-key: cypress-${{ runner.os }}-sudaley-${{ hashFiles('**abc.txt') }}
         env:
           DEBUG: '@cypress/github-action'
 
@@ -36,8 +36,8 @@ jobs:
       - name: Cache Cypress binary
         uses: actions/cache@v2
         with:
-          path: .cache/Cypress
-          key: cypress-${{ runner.os }}-sudaley-${{ hashFiles('**package-lock.json') }}
+          path: ~/.cache/Cypress
+          key: cypress-${{ runner.os }}-sudaley-${{ hashFiles('**abc.txt') }}
           
       # - name: Start Redis
       #   run: |
@@ -72,7 +72,7 @@ jobs:
       #   uses: actions/cache@v2
       #   with:
       #     path: ~/.npm
-      #     key: ${{ runner.os }}-${{ hashFiles('**package-lock.json') }}
+      #     key: ${{ runner.os }}-${{ hashFiles('**abc.txt') }}
 
       # - name: Cache Cypress binary
       #   uses: actions/cache@v2
