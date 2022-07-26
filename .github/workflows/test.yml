@@ -36,7 +36,7 @@ jobs:
       - name: Cache Cypress binary
         uses: actions/cache@v2
         with:
-          path: ~/.cache/Cypress
+          path: .cache/Cypress
           key: cypress-${{ runner.os }}-${{ hashFiles('**package-lock.json') }}
           
       # - name: Start Redis
