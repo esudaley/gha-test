@@ -46,7 +46,7 @@ jobs:
           key: cypress2-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
       
       - name: npm install 
-        run: npm install cypress --no-audit --no-fund --no-save
+        run: npm install cypress --no-audit --no-fund --no-save --no-package-lock
 
       - name: Run Cypress tests
         run: >-
