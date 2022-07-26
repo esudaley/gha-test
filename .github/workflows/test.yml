@@ -45,14 +45,12 @@ jobs:
           path: ~/.cache/Cypress
           key: cypress-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
       
-      - name: npm install --loglevel verbose cypress
-        run: npm install cypress --no-save
+      - name: npm install 
+        run: npm install cypress --no-save --loglevel verbose cypress
 
       - name: Run Cypress tests
         run: >-
           npx cypress run 
-        working-directory: alfred_gui 
-
 
           
       # - name: Start Redis
