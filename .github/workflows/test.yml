@@ -11,20 +11,20 @@ defaults:
   run:
     shell: bash -l {0}
 jobs:
-  install-cypress:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout 
-        uses: actions/checkout@v3
+  # install-cypress:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout 
+  #       uses: actions/checkout@v3
 
-      - name: Install Cypress
-        uses: cypress-io/github-action@v2
-        with:
-          install-command: npm ci --prefer-offline --no-audit
-          runTests: false
-          cache-key: cypress-${{ runner.os }}-sudaley-${{ hashFiles('**abc.txt') }}
-        env:
-          DEBUG: '@cypress/github-action'
+  #     - name: Install Cypress
+  #       uses: cypress-io/github-action@v2
+  #       with:
+  #         install-command: npm ci --prefer-offline --no-audit
+  #         runTests: false
+  #         cache-key: cypress-${{ runner.os }}-sudaley-${{ hashFiles('**abc.txt') }}
+  #       env:
+  #         DEBUG: '@cypress/github-action'
 
   run-cypress:
     runs-on: ubuntu-latest
@@ -37,7 +37,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ~/.cache/Cypress
-          key: cypress-${{ runner.os }}-sudaley-${{ hashFiles('**abc.txt') }}
+          key: cypress-${{ runner.os }}-sudaley-${{ hashFiles('*abc.txt') }}
           
       # - name: Start Redis
       #   run: |
