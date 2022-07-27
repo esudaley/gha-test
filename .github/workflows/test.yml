@@ -20,7 +20,7 @@ jobs:
           PATTERNS: 'api/**'
       - run: echo ${{ env.GIT_DIFF }}
       
-      - if: ${{ contains(${{env.GIT_DIFF}}, '.py') }}
+      - if: ${{ contains('hello', 'he') }}
         run: echo "RESULTS:" ${{ env.GIT_DIFF }}
   #   runs-on: ubuntu-latest
   #   steps:
