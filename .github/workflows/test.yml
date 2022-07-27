@@ -19,6 +19,9 @@ jobs:
         with:
           PATTERNS: 'api/**'
       - run: echo ${{ env.GIT_DIFF }}
+      
+      - if: contains('GIT_DIFF', '.py')
+        run: echo "RESULTS:" ${{ env.GIT_DIFF }}
   #   runs-on: ubuntu-latest
   #   steps:
   #     - name: Checkout 
