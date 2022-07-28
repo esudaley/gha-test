@@ -11,17 +11,32 @@ defaults:
   run:
     shell: bash -l {0}
 jobs:
-  check-diff:
+  j1:
+    if: false
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: technote-space/get-diff-action@v6
-        with:
-          PATTERNS: 'api/**'
-      - run: echo ${{ env.GIT_DIFF }}
+      - run: echo j1 
+     
+  j2:
+    runs-on: ubuntu-latest
+    needs: j1
+    steps:
+      - run: echo j2  
       
-      - if: ${{ contains(env.GIT_DIFF, '.py') }}
-        run: echo "RESULTS:" ${{ env.GIT_DIFF }}
+      
+      
+      
+      
+      
+      
+      # - uses: actions/checkout@v2
+      # - uses: technote-space/get-diff-action@v6
+      #   with:
+      #     PATTERNS: 'api/**'
+      # - run: echo ${{ env.GIT_DIFF }}
+      
+      # - if: ${{ contains(env.GIT_DIFF, '.py') }}
+      #   run: echo "RESULTS:" ${{ env.GIT_DIFF }}
   #   runs-on: ubuntu-latest
   #   steps:
   #     - name: Checkout 
