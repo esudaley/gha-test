@@ -12,17 +12,19 @@ defaults:
     shell: bash -l {0}
 jobs:
   j1:
+    if: false
     runs-on: ubuntu-latest
     steps:
       - run: abc.exe
      
   j2:
+    if: ${{needs.test-api.result == 'skipped') }}
     runs-on: ubuntu-latest
     needs: j1
     steps:
       - run: echo j2  
       
-      
+  
       
       
       
