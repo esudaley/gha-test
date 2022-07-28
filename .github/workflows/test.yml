@@ -1,7 +1,8 @@
 name: test-workflow
 
-on: push
-
+on:
+  push:
+  pull_request:
 env:
   CARGO_INCREMENTAL: 0
   CARGO_PROFILE_RELEASE_OPT_LEVEL: 1
