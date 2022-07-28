@@ -19,6 +19,7 @@ jobs:
      
   j2: 
     if: ${{ success() }}
+    needs: j1
     runs-on: ubuntu-latest
     steps:
       - run: ${{needs.test-api.result}}
