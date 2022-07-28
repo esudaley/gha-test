@@ -12,10 +12,9 @@ defaults:
     shell: bash -l {0}
 jobs:
   j1:
-    if: false
     runs-on: ubuntu-latest
     steps:
-      - run: echo j1 
+      - run: abc.exe
      
   j2:
     if: ${{ always() && !contains(needs.j1.result, 'success') }}
