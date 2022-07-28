@@ -18,7 +18,7 @@ jobs:
       - run: abc.exe
      
   j2: 
-    if: ${{ success() || j1.result == 'skipped'}}
+    if: success() || needs.j1.result == 'skipped'
     needs: j1
     runs-on: ubuntu-latest
     steps:
