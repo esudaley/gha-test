@@ -15,10 +15,10 @@ jobs:
     if: false
     runs-on: ubuntu-latest
     steps:
-      - run: abc.exe
+      - run: exit 1
      
   j2: 
-    if: success() || needs.j1.result == 'bkipped'
+    if: success() || needs.j1.result == 'skipped'
     needs: j1
     runs-on: ubuntu-latest
     steps:
