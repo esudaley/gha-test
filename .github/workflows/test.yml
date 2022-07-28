@@ -12,7 +12,6 @@ defaults:
     shell: bash -l {0}
 jobs:
   j1:
-    if: false
     runs-on: ubuntu-latest
     steps:
       - run: exit 1
