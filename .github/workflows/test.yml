@@ -18,11 +18,11 @@ jobs:
       - run: abc.exe
      
   j2:
-    if: ${{needs.test-api.result == 'skipped'}}
+    # if: ${{needs.test-api.result == 'skipped'}}
     runs-on: ubuntu-latest
     needs: j1
     steps:
-      - run: echo j2  
+      - run: ${{needs.test-api.result}}
       
   
       
