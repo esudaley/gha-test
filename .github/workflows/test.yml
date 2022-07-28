@@ -14,7 +14,7 @@ jobs:
   j1:
     runs-on: ubuntu-latest
     steps:
-      - run: exit 1
+      - run: echo j1
      
   j2: 
     if: success() || needs.j1.result == 'skipped'
