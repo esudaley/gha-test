@@ -17,10 +17,9 @@ jobs:
     steps:
       - run: abc.exe
      
-  j2:
-    # if: ${{needs.test-api.result == 'skipped'}}
+  j2: 
+    if: ${{ success() }}
     runs-on: ubuntu-latest
-    needs: j1
     steps:
       - run: ${{needs.test-api.result}}
       
