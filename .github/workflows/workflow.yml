@@ -17,4 +17,4 @@ jobs:
           -X POST 
           -H "Accept: application/vnd.github+json"  
           -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" 
-          https://api.github.com/repos/esudaley/gha-test/actions/runs/${{GITHUB_RUN_ID}}/cancel
+          https://api.github.com/repos/esudaley/gha-test/actions/runs/${{env.GITHUB_RUN_ID}}/cancel
