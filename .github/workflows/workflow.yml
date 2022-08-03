@@ -4,11 +4,11 @@ on:
   push:
 
 jobs:
-  # j1:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Detect file changes  
-  #       run: sleep 5m
+  j1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Detect file changes  
+        run: sleep 5m
   j2: 
     runs-on: ubuntu-latest
     steps:
