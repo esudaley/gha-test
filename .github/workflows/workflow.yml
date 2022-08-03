@@ -18,8 +18,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - run: echo j1
+
       - name: Detect file changes  
-        run: echo ${{env.GITHUB_RUN_ID}}
+        run: echo ${env.GITHUB_RUN_ID}
 
       
       
