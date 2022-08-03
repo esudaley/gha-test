@@ -16,11 +16,6 @@ jobs:
       - run: echo ${ secrets.GITHUB_TOKEN } 
       - run: echo $secrets.GITHUB_TOKEN 
       - run: echo $env.secrets.GITHUB_TOKEN
-      - run: echo ${{ secrets.GITHUB_TOKEN }} 
-        with:
-          env:
-            secrets.GITHUB_TOKEN 
-
       # - run: >-
       #     curl 
       #     -X POST 
