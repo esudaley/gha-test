@@ -12,5 +12,5 @@ jobs:
   j2: 
     runs-on: ubuntu-latest
     steps: 
-      - run: echo ${secrets.GITHUB_TOKEN}
+      - run: echo ${GITHUB_TOKEN}
 
