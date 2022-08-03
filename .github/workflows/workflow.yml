@@ -19,18 +19,7 @@ jobs:
         uses: actions/checkout@v3
       - run: echo j1
       - name: Detect file changes  
-        id: files-changed
-        uses: technote-space/get-diff-action@v6
-     
-  j2: 
-    if: (success() || needs.j1.result == 'skipped') 
-    needs: j1
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo j2
-      
-  
-      
+        run: sleep 5m
       
       
       
