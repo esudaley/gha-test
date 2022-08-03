@@ -20,7 +20,7 @@ jobs:
       - run: echo j1
 
       - name: Detect file changes  
-        run: echo ${env.GITHUB_RUN_ID}
+        run: echo ${GITHUB_RUN_ID}
 
       
       
