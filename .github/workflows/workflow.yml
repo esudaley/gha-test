@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: voxmedia/github-action-slack-notify-build@v1
         with:
-          channel: "E S"
+          channel_id: D03SMN4T5GU
           status: STARTED
           color: good
         env:  
