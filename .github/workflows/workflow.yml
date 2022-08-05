@@ -4,18 +4,14 @@ on:
   push:
 
 jobs:
-  j2:
+  j2: 
     runs-on: ubuntu-latest
     steps:
-      - uses: voxmedia/github-action-slack-notify-build@v1
+      - uses: sonots/slack-notice-action@v3
         with:
-          channel_id: D03SMN4T5GU
-          status: STARTED
-          color: good
-        env:  
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_WEBHOOK_URL}}
-    # - uses: actions/checkout@v2
-    # - name: Slack Notification
-    #   uses: rtCamp/action-slack-notify@v2
-    #   env:
-    #     SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          status: ${{ job.status }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # required, but GitHub should automatically supply
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} 
+        
+  
