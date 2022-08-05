@@ -7,11 +7,11 @@ jobs:
   j2: 
     runs-on: ubuntu-latest
     steps:
-      - uses: sonots/slack-notice-action@v3
+      - uses: voxmedia/github-action-slack-notify-build@v1
         with:
-          status: ${{ job.status }}
+          channel: "GHA Notifcaiton"
+          status: STARTED
+          color: good
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # required, but GitHub should automatically supply
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} 
-        
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_WEBHOOK_URL }}
   
