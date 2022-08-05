@@ -9,12 +9,12 @@ jobs:
     steps:
       - name: Send custom JSON data to Slack workflow
         
-        uses: voxmedia/github-action-slack-notify-build@v1
-        with:
-          channel_id: D03SK5G8B27
-          status: FAILED
-          color: danger
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@v2
         env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_WEBHOOK_URL}}
+          SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
+          SLACK_MESSAGE: 'Post Content :rocket:'
+          SLACK_TITLE: Post Title
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
         
   
