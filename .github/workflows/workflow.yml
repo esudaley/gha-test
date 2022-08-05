@@ -4,13 +4,18 @@ on:
   push:
 
 jobs:
-  j2: 
+  j2:
     runs-on: ubuntu-latest
     steps:
-      - name: Send custom JSON data to Slack workflow
-        
-        uses: eugene-babichenko/slack-notifier@v1
+      - uses: voxmedia/github-action-slack-notify-build@v1
         with:
-          webhook: ${{ secrets.SLACK_WEBHOOK_URL}}
-        
-  
+          channel: app-alerts
+          status: STARTED
+          color: good
+        env:  
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_WEBHOOK_URL}}
+    # - uses: actions/checkout@v2
+    # - name: Slack Notification
+    #   uses: rtCamp/action-slack-notify@v2
+    #   env:
+    #     SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
