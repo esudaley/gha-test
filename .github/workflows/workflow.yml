@@ -9,8 +9,12 @@ jobs:
     steps:
       - name: Send custom JSON data to Slack workflow
         
-        uses: eugene-babichenko/slack-notifier@v1
+        uses: voxmedia/github-action-slack-notify-build@v1
         with:
-          webhook: ${{ secrets.SLACK_WEBHOOK_URL}}
+          channel: gha
+          status: FAILED
+          color: danger
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_WEBHOOK_URL}}
         
   
