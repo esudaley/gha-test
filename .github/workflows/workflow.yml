@@ -4,11 +4,6 @@ on:
   push:
 
 jobs:
-  j1:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Detect file changes  
-        run: sleep 5m
   j2: 
     runs-on: ubuntu-latest
     steps:
@@ -31,5 +26,5 @@ jobs:
               ]
             }
         env:
-          SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
           SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
