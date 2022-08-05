@@ -12,9 +12,24 @@ jobs:
   j2: 
     runs-on: ubuntu-latest
     steps:
-      - run: >-
-          curl 
-          -X POST 
-          -H "Accept: application/vnd.github+json"  
-          -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" 
-          https://api.github.com/repos/esudaley/gha-test/actions/runs/${GITHUB_RUN_ID}/cancel
+      - name: Send custom JSON data to Slack workflow
+        id: slack
+        uses: slackapi/slack-github-action@v1.18.0
+        with:
+          # For posting a rich message using Block Kit
+          payload: |
+            {
+              "text": "GitHub Action build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "GitHub Action build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
+                  }
+                }
+              ]
+            }
+        env:
+          SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
