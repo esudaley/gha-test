@@ -12,7 +12,7 @@ jobs:
         if: always()
         with:
           type: ${{ job.status }}
-          mention: '@here'
+          mention: 'esudaley'
           mention_if: 'success'
           channel: '#gha'
           commit: true
