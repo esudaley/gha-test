@@ -7,11 +7,15 @@ jobs:
   j2: 
     runs-on: ubuntu-latest
     steps:
+
+      - run: exit 1
+      
       - name: Slack Notification
         uses: lazy-actions/slatify@master
+        if: always()
         with:
           type: ${{ job.status }}
-          job_name: '*Test*'
-          channel: '#gha'
+          # job_name: '*Test*'
+          channel: '#random'
           url: ${{ secrets.SLACK_WEBHOOK_URL }}
         
