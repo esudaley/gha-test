@@ -11,8 +11,8 @@ jobs:
         uses: lazy-actions/slatify@master
         if: always()
         with:
-          type: failure
-          mention: 'here'
+          type: ${{ job.status }}
+          mention: '@here'
           channel: '#gha'
           commit: true
           username: esudaley
