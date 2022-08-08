@@ -37,7 +37,7 @@ jobs:
       with:
         icon_emoji: ""
         author_name: ${{github.job}}
-        status: ${{ job.status }}
+        status: custom
         fields: job, commit, author,message
       env:
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
