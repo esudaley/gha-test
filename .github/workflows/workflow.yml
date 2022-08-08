@@ -11,7 +11,7 @@ jobs:
       id: step_one
       run: |
         echo 'user={
-          "esudaley":"U03SG9FGYHK"
+          "esudaley":"U03SG9FGYHK",
           "buddy": "guy"
           }' >> $GITHUB_ENV
 
