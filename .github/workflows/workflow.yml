@@ -21,7 +21,7 @@ jobs:
       if: always()
       uses: 8398a7/action-slack@v3.12.0
       with:
-        mention: ${{fromJSON(env.user)[env.user.buddy]}} 
+        mention: ${{fromJSON(env.user)[env.user.esudaley]}} 
         if_mention: always
         text: "Check Github Actions"
         author_name: ${{github.job}}
