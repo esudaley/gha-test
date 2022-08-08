@@ -35,9 +35,10 @@ jobs:
       if: always()
       uses: 8398a7/action-slack@v3.12.0
       with:
+        icon_emoji: 
         author_name: ${{github.job}}
         status: ${{ job.status }}
-        fields: repo,commit
+        fields: author,message,commit, job
       env:
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
 
