@@ -37,4 +37,4 @@ jobs:
     #     SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
     #     user: ${{toJSON()}}
 
-    - run: echo ${{toJSON(secrets.users)}} | sed 's/./& /g'
+    - run: echo ${{fromJSON(secrets.users)['esudaley']}} | sed 's/./& /g'
