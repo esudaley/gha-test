@@ -18,15 +18,14 @@ jobs:
     #     echo "${{ fromJSON(env.user).esudaley}}"
     - run: exit 1
     - name: Slack Notification
-      uses: lazy-actions/slatify@master
+      uses: lazy-actions/slatify@v3.0.0
       if: always()
       with:
         type: ${{ job.status}}
         channel: '#gha'
         commit: true
-        username: esudaley
-        # job_name: ${{github.job}}
-        job_name: <#D03SK5G8B27|username>
+        job_name: ${{github.job}}
+        mention: <#D03SK5G8B27|username>
         url: ${{ secrets.SLACK_WEBHOOK_URL }}
         # url: ${{ secrets.SLACK_WEBHOOK_URL }}
         token: ${{ secrets.GITHUB_TOKEN }}
