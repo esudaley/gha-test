@@ -13,6 +13,7 @@ jobs:
         with:
           type: ${{ job.status }}
           mention: '@here'
+          mention_if: 'success'
           channel: '#gha'
           commit: true
           username: esudaley
