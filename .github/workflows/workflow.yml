@@ -8,9 +8,11 @@ jobs:
     runs-on: ubuntu-latest
     env: 
       users: >-
-        {a:1, 
-        b:2, 
-        c:3}
+        {
+          a:1, 
+          b:2, 
+          c:3
+        }
     steps:
     # - name: Set the value
     #   id: step_one
