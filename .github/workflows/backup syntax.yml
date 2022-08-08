@@ -1,0 +1,22 @@
+name: test-workflow1
+
+on:
+  push:
+
+jobs:
+  test-api: 
+    runs-on: ubuntu-latest
+    steps:
+    - run: exit 1
+      
+    - name: action-slack
+      if: failure()
+      uses: 8398a7/action-slack@v3.12.0
+      with:
+        mention: ${{fromJSON(secrets.users)[github.actor]}} 
+        text: "Check Github Actions"
+        author_name: ${{github.job}}
+        status: ${{ job.status }}
+        fields: job, commit, message, ref
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
