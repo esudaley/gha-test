@@ -35,11 +35,12 @@ jobs:
       if: always()
       uses: 8398a7/action-slack@v3.12.0
       with:
-        icon_emoji: ⚠️
+        mention: D03SK5G8B27
+        if_mention: always
         text: "Check Github Actions"
         author_name: ${{github.job}}
         status: ${{ job.status }}
-        fields: job, commit, author, message
+        fields: job, commit,  message
       env:
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
 
