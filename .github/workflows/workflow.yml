@@ -9,13 +9,13 @@ jobs:
     steps:
 
       - run: exit 1
-      
+
       - name: Slack Notification
         uses: lazy-actions/slatify@master
         if: always()
         with:
           type: ${{ job.status }}
-          # job_name: '*Test*'
+          job_name: 'Alfred Testing'
           channel: '#random'
           url: ${{ secrets.SLACK_WEBHOOK_URL }}
         
