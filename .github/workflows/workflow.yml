@@ -24,7 +24,7 @@ jobs:
       with:
         mention: ${{fromJSON(env.user).esudaley}} 
         if_mention: always
-        text: "Check Github Actions"
+        text: " "
         author_name: ${{github.job}}
         status: ${{ job.status }}
         fields: job, commit, message, ref
