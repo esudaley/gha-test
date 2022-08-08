@@ -12,24 +12,19 @@ jobs:
       run: |
         echo 'user={"esudaley":"U03SG9FGYHK"}' >> $GITHUB_ENV
 
-    # - name: Use the value
-    #   id: step_two
-    #   run: |
-    #     echo "${{ fromJSON(env.user).esudaley}}"
-    - run: echo ${{github.actor}}
-    # - run: exit 1
+    - run: exit 1
       
-    # - name: action-slack
-    #   if: always()
-    #   uses: 8398a7/action-slack@v3.12.0
-    #   with:
-    #     mention: ${{fromJSON(env.user)['${github.actor}']}} 
-    #     if_mention: always
-    #     text: "Check Github Actions"
-    #     author_name: ${{github.job}}
-    #     status: ${{ job.status }}
-    #     fields: job, commit, message, ref
-    #   env:
-    #     SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+    - name: action-slack
+      if: always()
+      uses: 8398a7/action-slack@v3.12.0
+      with:
+        mention: ${{fromJSON(env.user)['${{github.actor}}']}} 
+        if_mention: always
+        text: "Check Github Actions"
+        author_name: ${{github.job}}
+        status: ${{ job.status }}
+        fields: job, commit, message, ref
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
 
   
