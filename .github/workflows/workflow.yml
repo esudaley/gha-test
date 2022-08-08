@@ -7,15 +7,15 @@ jobs:
   j2: 
     runs-on: ubuntu-latest
     steps:
-    - name: Set the value
-      id: step_one
-      run: |
-        echo 'user={"esudaley":"E S"}' >> $GITHUB_ENV
+    # - name: Set the value
+    #   id: step_one
+    #   run: |
+    #     echo 'user={"esudaley":"E S"}' >> $GITHUB_ENV
 
-    - name: Use the value
-      id: step_two
-      run: |
-        echo "${{ fromJSON(env.user).esudaley}}"
+    # - name: Use the value
+    #   id: step_two
+    #   run: |
+    #     echo "${{ fromJSON(env.user).esudaley}}"
 
     - name: Slack Notification
       uses: lazy-actions/slatify@master
@@ -26,7 +26,7 @@ jobs:
         commit: true
         username: esudaley
         # job_name: ${{github.job}}
-        job_name: <@everyone>
+        job_name: <#D03SK5G8B27|username>
         url: ${{ secrets.SLACK_WEBHOOK_URL }}
         # url: ${{ secrets.SLACK_WEBHOOK_URL }}
         token: ${{ secrets.GITHUB_TOKEN }}
