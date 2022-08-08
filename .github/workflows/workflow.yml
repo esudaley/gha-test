@@ -7,17 +7,21 @@ jobs:
   j2: 
     runs-on: ubuntu-latest
     steps:
-      - name: Slack Notification
-        uses: lazy-actions/slatify@master
-        if: always()
-        with:
-          type: ${{ job.status }}
-          mention: 'esudaley'
-          mention_if: 'success'
-          channel: '#gha'
-          commit: true
-          username: esudaley
-          job_name: ${{github.job}}
-          url: ${{ secrets.SLACK_WEBHOOK_URL }}
-          token: ${{ secrets.GITHUB_TOKEN }}
-        
+      # - name: Slack Notification
+      #   uses: lazy-actions/slatify@master
+      #   if: always()
+      #   with:
+      #     type: ${{ job.status }}
+      #     mention: 'esudaley'
+      #     mention_if: 'success'
+      #     channel: '#gha'
+      #     commit: true
+      #     username: esudaley
+      #     job_name: ${{github.job}}
+      #     url: ${{ secrets.SLACK_WEBHOOK_URL }}
+      #     token: ${{ secrets.GITHUB_TOKEN }}
+    - uses: jwulf/add-env-vars-action@master
+      with:
+        map: '{"user": {"esudaley": "eli"}}'
+    - name: test1
+      run: echo ${{ env.user }}
