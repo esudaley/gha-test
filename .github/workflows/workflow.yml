@@ -15,7 +15,10 @@ jobs:
         if: always()
         with:
           type: ${{ job.status }}
+          mention: 'here'
+          mention_if: 'failure'
+          channel: '#gha'
+          commit: true
           job_name: 'Alfred Testing'
-          channel: '#random'
           url: ${{ secrets.SLACK_WEBHOOK_URL }}
         
