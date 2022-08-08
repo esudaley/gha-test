@@ -18,7 +18,7 @@ jobs:
       if: always()
       uses: 8398a7/action-slack@v3.12.0
       with:
-        mention: ${{env.actor}} 
+        mention: ${{fromJSON(env.user)['${{env.actor}}'] }} 
         if_mention: always
         text: "Check Github Actions"
         author_name: ${{github.job}}
@@ -26,5 +26,5 @@ jobs:
         fields: job, commit, message, ref
       env:
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-        actor: ${{github.actor}}
+        actor: github.actor
   
