@@ -6,12 +6,12 @@ on:
 jobs:
   test-api: 
     runs-on: ubuntu-latest
-    env: 
-      user: >- 
-        ${{toJSON('{
-          "esudaley":"U03SG9FGYHK",
-          "buddy": "guy"
-          }')}}
+    # env: 
+    #   user: >- 
+    #     ${{toJSON('{
+    #       "esudaley":"U03SG9FGYHK",
+    #       "buddy": "guy"
+    #       }')}}
     steps:
     # - name: Set the value
     #   id: step_one
@@ -37,5 +37,14 @@ jobs:
     #     SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
     #     user: ${{toJSON()}}
 
-  
-      - run: echo ${{fromJSON(env.user)}}
+    - uses: kanga333/variable-mapper@master
+      id: export
+      with:
+        key: "${{ github.event.inputs.environment }}"
+        map: |
+          {
+            "esudaley":"U03SG9FGYHK",
+            "buddy": "guy"
+          }
+        export_to: env
+    - run: echo ${{toJSON(env.user)}}
