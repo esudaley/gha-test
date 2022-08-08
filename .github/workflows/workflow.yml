@@ -22,7 +22,7 @@ jobs:
       if: always()
       with:
         type: ${{ job.status}}
-        mention: fromJSON(env.user).esudaley
+        mention: ${{fromJSON(env.user).esudaley}}
         mention_if: 'success'
         channel: '#gha'
         commit: true
