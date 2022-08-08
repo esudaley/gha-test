@@ -19,6 +19,7 @@ jobs:
           mention_if: 'failure'
           channel: '#gha'
           commit: true
-          job_name: 'Alfred Testing'
+          job_name: ${{job. }}
           url: ${{ secrets.SLACK_WEBHOOK_URL }}
+          token: ${{ secrets.GITHUB_TOKEN }}
         
