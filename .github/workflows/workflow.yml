@@ -43,8 +43,10 @@ jobs:
         key: "${{ github.event.inputs.environment }}"
         map: |
           {
-            "esudaley":"U03SG9FGYHK",
+            "user": {
+            "esudaley": "U03SG9FGYHK",
             "buddy": "guy"
+            }
           }
         export_to: env
     - run: echo ${{toJSON(env.user)}}
