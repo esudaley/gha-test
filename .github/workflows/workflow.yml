@@ -8,8 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      - run: echo ${{job}}
-      - run: echo ${{job.container.id}}
+      - run: echo ${{job.name}}
 
       # - name: Slack Notification
       #   uses: lazy-actions/slatify@master
