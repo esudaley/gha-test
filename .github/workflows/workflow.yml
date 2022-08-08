@@ -6,27 +6,36 @@ on:
 jobs:
   test-api: 
     runs-on: ubuntu-latest
-    steps:
-    - name: Set the value
-      id: step_one
-      run: >-
-        echo 'user={
+    env: 
+      user: >- 
+        ${{toJSON('{
           "esudaley":"U03SG9FGYHK",
           "buddy": "guy"
-          }' >> $GITHUB_ENV
+          }'')}}
+    steps:
+    # - name: Set the value
+    #   id: step_one
+    #   run: >-
+    #     echo 'user={
+    #       "esudaley":"U03SG9FGYHK",
+    #       "buddy": "guy"
+    #       }' >> $GITHUB_ENV
 
     # - run: exit 1
       
-    - name: action-slack
-      if: always()
-      uses: 8398a7/action-slack@v3.12.0
-      with:
-        mention: ${{fromJSON(env.user)['buddy']}} 
-        if_mention: always
-        text: "Check Github Actions"
-        author_name: ${{github.job}}
-        status: ${{ job.status }}
-        fields: job, commit, message, ref
-      env:
-        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+    # - name: action-slack
+    #   if: always()
+    #   uses: 8398a7/action-slack@v3.12.0
+    #   with:
+    #     mention: ${{fromJSON(env.user)['buddy']}} 
+    #     if_mention: always
+    #     text: "Check Github Actions"
+    #     author_name: ${{github.job}}
+    #     status: ${{ job.status }}
+    #     fields: job, commit, message, ref
+    #   env:
+    #     SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+    #     user: ${{toJSON()}}
+
   
+      - run: echo ${{fromJSON(env.user)}}
