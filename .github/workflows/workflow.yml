@@ -16,7 +16,7 @@ jobs:
     #   id: step_two
     #   run: |
     #     echo "${{ fromJSON(env.user).esudaley}}"
-    - run: ${github.actor}
+    - run: echo ${{github.actor}}
     # - run: exit 1
       
     # - name: action-slack
