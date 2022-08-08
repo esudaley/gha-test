@@ -26,5 +26,5 @@ jobs:
         fields: job, commit, message, ref
       env:
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-        actor: github.actor
+        actor: ${{github.actor}}
   
