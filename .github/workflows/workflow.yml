@@ -11,7 +11,7 @@ jobs:
         ${{toJSON('{
           "esudaley":"U03SG9FGYHK",
           "buddy": "guy"
-          }'')}}
+          }')}}
     steps:
     # - name: Set the value
     #   id: step_one
