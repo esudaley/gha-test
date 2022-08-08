@@ -7,25 +7,27 @@ jobs:
   j2: 
     runs-on: ubuntu-latest
     steps:
-      # - name: Slack Notification
-      #   uses: lazy-actions/slatify@master
-      #   if: always()
-      #   with:
-      #     type: ${{ job.status }}
-      #     mention: 'esudaley'
-      #     mention_if: 'success'
-      #     channel: '#gha'
-      #     commit: true
-      #     username: esudaley
-      #     job_name: ${{github.job}}
-      #     url: ${{ secrets.SLACK_WEBHOOK_URL }}
-      #     token: ${{ secrets.GITHUB_TOKEN }}
     - name: Set the value
       id: step_one
       run: |
-        echo 'user={"users":{"esudaley":"Eli Sudaley"}}' >> $GITHUB_ENV
+        echo 'user={"esudaley":"Eli Sudaley"}' >> $GITHUB_ENV
 
     - name: Use the value
       id: step_two
       run: |
-        echo "${{ fromJSON(env.user).users.esudaley}}"
+        echo "${{ fromJSON(env.user).esudaley}}"
+
+    - name: Slack Notification
+      uses: lazy-actions/slatify@master
+      if: always()
+      with:
+        type: ${{ job.status }}
+        mention: fromJSON(env.user).esudaley
+        mention_if: 'success'
+        channel: '#gha'
+        commit: true
+        username: esudaley
+        job_name: ${{github.job}}
+        url: ${{ secrets.SLACK_WEBHOOK_URL }}
+        token: ${{ secrets.GITHUB_TOKEN }}
+  
