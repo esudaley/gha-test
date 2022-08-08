@@ -35,7 +35,8 @@ jobs:
       if: always()
       uses: 8398a7/action-slack@v3.12.0
       with:
-        text: "\\U+26A0 Check Github Actions"
+        icon_emoji: ⚠️
+        text: "Check Github Actions"
         author_name: ${{github.job}}
         status: ${{ job.status }}
         fields: job, commit, author, message
