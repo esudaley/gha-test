@@ -23,9 +23,9 @@ jobs:
     - name: Set the value
       id: step_one
       run: |
-        echo "user=eli" >> $GITHUB_ENV
+        echo 'user={"users":{"esudaley":"Eli Sudaley"}}' >> $GITHUB_ENV
 
     - name: Use the value
       id: step_two
       run: |
-        echo "${{ env.user }}"
+        echo "${{ env.user.esudaley }}"
