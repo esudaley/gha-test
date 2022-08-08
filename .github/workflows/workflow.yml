@@ -8,18 +8,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      - run: exit 1
+      - run: echo ${{job}}
+      - run: echo ${{job.container.id}}
 
-      - name: Slack Notification
-        uses: lazy-actions/slatify@master
-        if: always()
-        with:
-          type: ${{ job.status }}
-          mention: 'here'
-          mention_if: 'failure'
-          channel: '#gha'
-          commit: true
-          job_name: ${{env.GITHUB_JOB}}
-          url: ${{ secrets.SLACK_WEBHOOK_URL }}
-          token: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Slack Notification
+      #   uses: lazy-actions/slatify@master
+      #   if: always()
+      #   with:
+      #     type: ${{ job.status }}
+      #     mention: 'here'
+      #     mention_if: 'failure'
+      #     channel: '#gha'
+      #     commit: true
+      #     job_name: ${{env.GITHUB_JOB}}
+      #     url: ${{ secrets.SLACK_WEBHOOK_URL }}
+      #     token: ${{ secrets.GITHUB_TOKEN }}
         
