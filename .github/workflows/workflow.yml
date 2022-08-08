@@ -28,4 +28,4 @@ jobs:
     - name: Use the value
       id: step_two
       run: |
-        echo "${{ toJSON(env.user)}}"
+        echo "${{ fromJSON(env.user)}}"
