@@ -22,7 +22,7 @@ jobs:
       with:
         # mention: U03SG9FGYHK
         # mention: ${{fromJSON(env.users)['b']}} 
-        mention: ${{fromJSON(env.users[github.actor])}} 
+        mention: ${{fromJSON(env.users.github.actor)}} 
         if_mention: always
         text: "Check Github Actions"
         author_name: ${{github.job}}
