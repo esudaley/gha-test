@@ -16,18 +16,26 @@ jobs:
     #   id: step_two
     #   run: |
     #     echo "${{ fromJSON(env.user).esudaley}}"
-    - run: exit 1
-    - name: Slack Notification
-      uses: lazy-actions/slatify@v3.0.0
-      if: always()
+    # - run: exit 1
+    # - name: Slack Notification
+    #   uses: lazy-actions/slatify@v3.0.0
+    #   if: always()
+    #   with:
+    #     type: ${{ job.status}}
+    #     channel: '#gha'
+    #     commit: true
+    #     job_name: ${{github.job}}
+    #     mention: D03SK5G8B27
+    #     mention_if: failure
+    #     url: ${{ secrets.SLACK_WEBHOOK_URL }}
+    #     # url: ${{ secrets.SLACK_WEBHOOK_URL }}
+    #     token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: action-slack
+      uses: 8398a7/action-slack@v3.12.0
       with:
-        type: ${{ job.status}}
-        channel: '#gha'
-        commit: true
-        job_name: ${{github.job}}
-        mention: D03SK5G8B27
-        mention_if: failure
-        url: ${{ secrets.SLACK_WEBHOOK_URL }}
-        # url: ${{ secrets.SLACK_WEBHOOK_URL }}
-        token: ${{ secrets.GITHUB_TOKEN }}
+        fields: repo,commit
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
   
