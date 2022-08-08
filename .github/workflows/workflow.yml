@@ -9,9 +9,8 @@ jobs:
     env: 
       users: >-
         {
-        esudaley:U03SG9FGYHK, 
-        b:2, 
-        c:3}
+        "esudaley":"U03SG9FGYHK", 
+        }
     steps:
 
     # - run: exit 1
