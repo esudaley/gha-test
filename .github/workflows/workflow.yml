@@ -22,12 +22,12 @@ jobs:
       if: always()
       with:
         type: ${{ job.status}}
-        mention: "@E S"
-        mention_if: 'success'
         channel: '#gha'
         commit: true
         username: esudaley
-        job_name: ${{github.job}}
+        # job_name: ${{github.job}}
+        job_name: "@E S"
         url: ${{ secrets.SLACK_WEBHOOK_URL }}
+        # url: ${{ secrets.SLACK_WEBHOOK_URL }}
         token: ${{ secrets.GITHUB_TOKEN }}
   
