@@ -10,7 +10,10 @@ jobs:
     - name: Set the value
       id: step_one
       run: |
-        echo 'user={"esudaley":"U03SG9FGYHK"}' >> $GITHUB_ENV
+        echo 'user={
+          "esudaley":"U03SG9FGYHK"
+          "buddy": "guy"
+          }' >> $GITHUB_ENV
 
     # - run: exit 1
       
@@ -18,7 +21,7 @@ jobs:
       if: always()
       uses: 8398a7/action-slack@v3.12.0
       with:
-        mention: ${{fromJSON(env.user)[github.actor]}} 
+        mention: ${{fromJSON(env.user)["guy"]}} 
         if_mention: always
         text: "Check Github Actions"
         author_name: ${{github.job}}
