@@ -35,7 +35,7 @@ jobs:
       if: always()
       uses: 8398a7/action-slack@v3.12.0
       with:
-        text: 
+        text: ""
         author_name: ${{github.job}}
         status: ${{ job.status }}
         fields: job, commit, author,message
