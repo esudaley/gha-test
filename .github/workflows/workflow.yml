@@ -20,8 +20,12 @@ jobs:
       #     job_name: ${{github.job}}
       #     url: ${{ secrets.SLACK_WEBHOOK_URL }}
       #     token: ${{ secrets.GITHUB_TOKEN }}
-    - uses: jwulf/add-env-vars-action@master
-      with:
-        map: '{"user": {"esudaley": "eli"}}'
-    - name: test1
-      run: echo ${{ env.user }}
+    - name: Set the value
+      id: step_one
+      run: |
+        echo "user=eli" >> $GITHUB_ENV
+
+    - name: Use the value
+      id: step_two
+      run: |
+        echo "${{ env.user }}"
