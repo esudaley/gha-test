@@ -26,6 +26,7 @@ jobs:
         commit: true
         job_name: ${{github.job}}
         mention: <#D03SK5G8B27|username>
+        mention_if: failure
         url: ${{ secrets.SLACK_WEBHOOK_URL }}
         # url: ${{ secrets.SLACK_WEBHOOK_URL }}
         token: ${{ secrets.GITHUB_TOKEN }}
