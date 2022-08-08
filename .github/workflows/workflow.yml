@@ -6,13 +6,12 @@ on:
 jobs:
   test-api: 
     runs-on: ubuntu-latest
-    env: 
-      users: >-
-        {
-          a:1, 
-          b:2, 
-          c:3
-        }
+    # env: 
+    #   users: >-
+    #     {
+    #     a:1, 
+    #     b:2, 
+    #     c:3}
     steps:
     # - name: Set the value
     #   id: step_one
@@ -28,8 +27,8 @@ jobs:
       if: always()
       uses: 8398a7/action-slack@v3.12.0
       with:
-        # mention: ${{fromJSON(secrets.users)['esudaley']}} 
-        mention: ${{fromJSON(env.users)['b']}} 
+        mention: ${{fromJSON(secrets.users)['esudaley']}} 
+        # mention: ${{fromJSON(env.users)['b']}} 
         if_mention: always
         text: "Check Github Actions"
         author_name: ${{github.job}}
