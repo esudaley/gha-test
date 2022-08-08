@@ -9,8 +9,11 @@ jobs:
     steps:
     - name: Set the value
       id: step_one
-      run: |
-        echo 'user={"esudaley":"U03SG9FGYHK","buddy": "guy"}' >> $GITHUB_ENV
+      run: >-
+        echo 'user={
+          "esudaley":"U03SG9FGYHK",
+          "buddy": "guy"
+          }' >> $GITHUB_ENV
 
     # - run: exit 1
       
