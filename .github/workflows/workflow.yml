@@ -15,6 +15,7 @@ jobs:
           mention: 'here'
           channel: '#gha'
           commit: true
+          username: esudaley
           job_name: ${{github.job}}
           url: ${{ secrets.SLACK_WEBHOOK_URL }}
           token: ${{ secrets.GITHUB_TOKEN }}
