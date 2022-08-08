@@ -16,7 +16,7 @@ jobs:
     #   id: step_two
     #   run: |
     #     echo "${{ fromJSON(env.user).esudaley}}"
-
+    - run: exit 1
     - name: Slack Notification
       uses: lazy-actions/slatify@master
       if: always()
