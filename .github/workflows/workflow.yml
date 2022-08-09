@@ -26,6 +26,6 @@ jobs:
           text: "Check Github Actions"
           author_name: ${{github.job}}
           status: failure
-          fields: commit, message
+          fields: commit, message, workflow, ref
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
