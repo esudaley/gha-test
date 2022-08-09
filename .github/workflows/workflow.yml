@@ -48,6 +48,7 @@ jobs:
         uses: actions/github-script@v6
         id: failed-job
         with:
+          result-encoding: string
           script: |
              const results = await github.rest.actions.listJobsForWorkflowRun({
                 owner: context.repo.owner,
@@ -68,7 +69,7 @@ jobs:
           text: "Check Github Actions"
           author_name: ${{github.job}}
           status: failure
-          job_name: ${{env.j}}
+          job_name: ${{steps.failed-job.outputs.result}}
           fields: commit, message, job, ref
           
         env:
