@@ -45,7 +45,7 @@ jobs:
     needs: [sample-job]
     steps:
       - name: Get failed job 
-      - uses: actions/github-script@v6
+        uses: actions/github-script@v6
         id: failed-job
         with:
           script: |
