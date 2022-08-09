@@ -11,12 +11,12 @@ jobs:
     steps:
       - name: Checkout 
         uses: actions/checkout@v3
-        
+
       - name: Cache Cypress Binary
         id: cache-cypress-binary
         uses: actions/cache@v2
         with:
-          path: cypress/cache
+          path: .cache/cypress
           key: cypress-binary-${{ hashFiles('package-lock.json') }}
           
       - name: Get npm cache directory
