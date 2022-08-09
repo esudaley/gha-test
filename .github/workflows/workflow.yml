@@ -13,7 +13,7 @@ jobs:
     if: failure()
     # if: (success() || needs.test-api.result == 'skipped') && !cancelled() 
     runs-on: ubuntu-latest
-    needs: [test-api]
+    # needs: [test-api]
     steps:
       - run: echo $github
     # - name: action-slack
