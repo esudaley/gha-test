@@ -18,14 +18,14 @@ jobs:
       - run: echo ${{github.base_ref}}
       - run: echo ${{github.ref_name}}
 
-    # - name: action-slack
-    #   uses: 8398a7/action-slack@v3.12.0
-    #   with:
-    #     mention: ${{fromJSON(secrets.users)[github.actor]}} 
-    #     if_mention: always
-    #     text: "Check Github Actions"
-    #     author_name: ${{github.job}}
-    #     status: failure
-    #     fields: commit, message
-    #   env:
-    #     SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      - name: action-slack
+        uses: 8398a7/action-slack@v3.12.0
+        with:
+          mention: ${{fromJSON(secrets.users)[github.actor]}} 
+          if_mention: always
+          text: "Check Github Actions"
+          author_name: ${{github.job}}
+          status: failure
+          fields: commit, message
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
