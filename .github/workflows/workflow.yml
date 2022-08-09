@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [test-api]
     steps:
-      - run: echo hello from failure
+      - run: echo gitub 
     # - name: action-slack
     #   uses: 8398a7/action-slack@v3.12.0
     #   with:
