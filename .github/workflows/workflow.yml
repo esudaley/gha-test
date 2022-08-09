@@ -10,6 +10,7 @@ jobs:
     steps:
       - run: echo sometext; exit 1
   get-job:
+    if: always()
     runs-on: ubuntu-latest
     steps:
       - uses: actions/github-script@v6
