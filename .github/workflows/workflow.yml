@@ -12,6 +12,7 @@ jobs:
         id: set-result
         with:
           script: |
+            console.log("SUDALEY",context.run_id)
              const result = await github.rest.actions.listJobsForWorkflowRun({
               owner: context.repo.owner,
               repo: context.repo.repo,
