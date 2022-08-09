@@ -11,6 +11,7 @@ jobs:
       - run: echo sometext; exit 1
   get-job:
     if: always()
+    needs: [sample-job]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/github-script@v6
