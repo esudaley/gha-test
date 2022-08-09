@@ -5,79 +5,15 @@ on:
   pull_request: 
 
 jobs:
-  # sample-job0:  
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - run: echo sometext0;
 
   sample-job:
     runs-on: ubuntu-latest
     steps:
-      - name: Setup firefox
-        uses: browser-actions/setup-firefox@latest
+      - uses: actions/cache@v3
+        id: npm-cache # use this to check for `cache-hit` ==> if: steps.npm-cache.outputs.cache-hit != 'true'
         with:
-          firefox-version: ${{ matrix.firefox }}
-      - run: firefox --version
-  # get-job:
-  #   if: always()
-  #   needs: [sample-job]
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/github-script@v6
-  #       id: failed-job
-  #       with:
-  #         script: |
-  #            const results = await github.rest.actions.listJobsForWorkflowRun({
-  #               owner: context.repo.owner,
-  #               repo: context.repo.repo,
-  #               run_id: context.runId
-  #               });
-  #             results.data.jobs.forEach(job => {
-  #               if (job.conclusion === 'failure'){
-  #                 console.log(job.name)
-  #                 return job.name
-  #               }
-  #             })
-  # test-api: 
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #   - run: exit 1
-
-  # slack-notify:
-  #   if: failure() && (github.ref_name == 'main' || github.base_ref == 'main')
-  #   runs-on: ubuntu-latest
-  #   needs: [sample-job, sample-job0]
-  #   steps:
-  #     - name: Get failed job 
-  #       uses: actions/github-script@v6
-  #       id: failed-job
-  #       with:
-  #         result-encoding: string
-  #         script: |
-  #            const results = await github.rest.actions.listJobsForWorkflowRun({
-  #               owner: context.repo.owner,
-  #               repo: context.repo.repo,
-  #               run_id: context.runId
-  #               });
-              
-  #             for (let job of results.data.jobs){
-  #               if (job.conclusion === 'failure'){
-  #                   return job.name
-  #               }
-  #             }
-
-  #     - run: echo ${{steps.failed-job.outputs.result}}
-  #     - name: action-slack
-  #       uses: 8398a7/action-slack@v3.12.0
-  #       with:
-  #         mention: ${{fromJSON(secrets.users)[github.actor]}} 
-  #         if_mention: always
-  #         text: "Check Github Actions"
-  #         author_name: ${{github.job}}
-  #         status: failure
-  #         job_name: ${{steps.failed-job.outputs.result}}
-  #         fields: commit, message, job, ref
-          
-  #       env:
-  #         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-  #         j: ${{steps.failed-job.outputs.result}}
+          path: ${{ steps.npm-cache-dir.outputs.dir }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+      
+      - name: Install time
+        run: npm install
