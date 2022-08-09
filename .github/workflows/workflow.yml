@@ -5,6 +5,10 @@ on:
   pull_request: 
 
 jobs:
+  sample-job:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo sometext
   get-job:
     runs-on: ubuntu-latest
     steps:
