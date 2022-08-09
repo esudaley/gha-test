@@ -56,7 +56,7 @@ jobs:
                 });
               for (let job of results.data.jobs){
                 if (job.conclusion === 'failure'){
-                    return job.name.replace('"','')
+                    return job.name
                 }
               }
       - run: echo ${{steps.failed-job.outputs.result}}
@@ -68,8 +68,9 @@ jobs:
           text: "Check Github Actions"
           author_name: ${{github.job}}
           status: failure
-          job_name: ${{steps.failed-job.outputs.result}}
+          job_name: ${{j}}
           fields: commit, message, job, ref
           
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          j: ${{steps.failed-job.outputs.result}}
