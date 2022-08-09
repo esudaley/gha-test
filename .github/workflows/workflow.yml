@@ -59,7 +59,7 @@ jobs:
                     return job.name
                 }
               }
-      - run: echo ${{steps.failed-job.outputs.result}}}
+      - run: echo ${{steps.failed-job.outputs.result}}
       - name: action-slack
         uses: 8398a7/action-slack@v3.12.0
         with:
@@ -68,7 +68,7 @@ jobs:
           text: "Check Github Actions"
           author_name: ${{github.job}}
           status: failure
-          job_name: ${{steps.failed-job.outputs.result}}}
+          job_name: ${{steps.failed-job.outputs.result}}
           fields: commit, message, job, ref
           
         env:
