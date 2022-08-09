@@ -16,7 +16,7 @@ jobs:
              const result = await github.rest.actions.listJobsForWorkflowRun({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              run_id: context.run_id
+              run_id: context.runId
               });
               console.log(result)
           
