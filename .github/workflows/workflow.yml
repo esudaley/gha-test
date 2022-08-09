@@ -12,7 +12,7 @@ jobs:
         id: set-result
         with:
           script: |
-             const result = await github.request.listJobsForWorkflowRun({
+             const result = await github.rest.listJobsForWorkflowRun({
               owner: context.repo.owner,
               repo: context.repo.repo,
               run_id: context.run_id
