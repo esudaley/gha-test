@@ -4,10 +4,10 @@ on:
   push:
 
 jobs:
-  test-api: 
-    runs-on: ubuntu-latest
-    steps:
-    - run: exit 1
+  # test-api: 
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - run: exit 1
 
   slack-notify:
     if: failure()
@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [test-api]
     steps:
-      - run: echo gitub 
+      - run: echo $github
     # - name: action-slack
     #   uses: 8398a7/action-slack@v3.12.0
     #   with:
