@@ -54,12 +54,11 @@ jobs:
                 repo: context.repo.repo,
                 run_id: context.runId
                 });
-              results.data.jobs.forEach(job => {
+              for (let job of results.data.jobs){
                 if (job.conclusion === 'failure'){
-                  console.log(job.name)
-                  return job.name
+                    return job.name
                 }
-              })
+              }
       - run: echo ${{steps.failed-job.outputs.result}}}
       - name: action-slack
         uses: 8398a7/action-slack@v3.12.0
