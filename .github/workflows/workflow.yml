@@ -10,7 +10,7 @@ jobs:
     - run: exit 1
 
   slack-notify:
-    if: failure() 
+    if: always() && failure() 
     runs-on: ubuntu-latest
     steps:
     - name: action-slack
