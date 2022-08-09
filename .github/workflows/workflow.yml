@@ -56,7 +56,7 @@ jobs:
                 });
               for (let job of results.data.jobs){
                 if (job.conclusion === 'failure'){
-                    return job.name
+                    return job.name.replace('"','')
                 }
               }
       - run: echo ${{steps.failed-job.outputs.result}}
@@ -68,7 +68,7 @@ jobs:
           text: "Check Github Actions"
           author_name: ${{github.job}}
           status: failure
-          job_name: "sample-job"
+          job_name: ${{steps.failed-job.outputs.result}}
           fields: commit, message, job, ref
           
         env:
