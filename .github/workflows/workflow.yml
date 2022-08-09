@@ -14,11 +14,11 @@ jobs:
           script: |
             console.log("SUDALEY",context.runId)
              const result = await github.rest.actions.listJobsForWorkflowRun({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              run_id: context.runId
-              });
-              console.log(result)
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                run_id: context.runId
+                });
+              console.log("RESULTS", JSON.stringify(result))
           
           result-encoding: string
       - name: Get result
