@@ -10,8 +10,8 @@ jobs:
     - run: exit 1
 
   slack-notify:
+    if: failure() 
     runs-on: ubuntu-latest
-    if: always()
     steps:
     - name: action-slack
       uses: 8398a7/action-slack@v3.12.0
