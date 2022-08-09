@@ -15,7 +15,9 @@ jobs:
     runs-on: ubuntu-latest
     # needs: [test-api]
     steps:
-      - run: echo ${{toJSON(github)}}
+      - run: echo ${{github.base_ref}}
+      - run: echo ${{github.ref_name}}
+
     # - name: action-slack
     #   uses: 8398a7/action-slack@v3.12.0
     #   with:
