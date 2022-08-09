@@ -11,16 +11,19 @@ jobs:
 
   slack-notify:
     if: failure()
+    # if: (success() || needs.test-api.result == 'skipped') && !cancelled() 
     runs-on: ubuntu-latest
+    needs: [test-api]
     steps:
-    - name: action-slack
-      uses: 8398a7/action-slack@v3.12.0
-      with:
-        mention: ${{fromJSON(secrets.users)[github.actor]}} 
-        if_mention: always
-        text: "Check Github Actions"
-        author_name: ${{github.job}}
-        status: failure
-        fields: commit, message
-      env:
-        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      - run: echo hello from failure
+    # - name: action-slack
+    #   uses: 8398a7/action-slack@v3.12.0
+    #   with:
+    #     mention: ${{fromJSON(secrets.users)[github.actor]}} 
+    #     if_mention: always
+    #     text: "Check Github Actions"
+    #     author_name: ${{github.job}}
+    #     status: failure
+    #     fields: commit, message
+    #   env:
+    #     SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
