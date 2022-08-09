@@ -23,7 +23,12 @@ jobs:
                 repo: context.repo.repo,
                 run_id: context.runId
                 });
-             console.log("SUDALEY", JSON.stringify(results))
+              results.data.jobs.forEach(job => {
+                if (job.conclusion === 'failure'){
+                  console.log(job.name)
+                  return job.name
+                }
+              })
   # test-api: 
   #   runs-on: ubuntu-latest
   #   steps:
