@@ -23,4 +23,7 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
       
       - name: Install time
-        run: npm install
+        run: npm install --prefer-offline --no-audit --no-fund
+
+      - name: ci
+        run: npm ci
