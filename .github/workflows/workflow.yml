@@ -10,7 +10,7 @@ jobs:
   #   - run: exit 1
 
   slack-notify:
-    if: failure()
+    # if: failure()
     # if: (success() || needs.test-api.result == 'skipped') && !cancelled() 
     runs-on: ubuntu-latest
     # needs: [test-api]
