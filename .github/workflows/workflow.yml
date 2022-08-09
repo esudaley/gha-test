@@ -8,7 +8,7 @@ jobs:
   sample-job0:  
     runs-on: ubuntu-latest
     steps:
-      - run: echo sometext0;
+      - run: echo sometext0; exit 1
 
   sample-job:
     runs-on: ubuntu-latest
