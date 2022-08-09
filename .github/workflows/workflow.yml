@@ -8,12 +8,12 @@ jobs:
   sample-job0:  
     runs-on: ubuntu-latest
     steps:
-      - run: echo sometext0; exit 1
+      - run: echo sometext0;
 
   sample-job:
     runs-on: ubuntu-latest
     steps:
-      - run: echo sometext; exit 1
+      - run: echo sometext; sleep 30s; exit 1
   # get-job:
   #   if: always()
   #   needs: [sample-job]
