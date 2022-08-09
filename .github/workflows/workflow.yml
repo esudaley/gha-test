@@ -11,7 +11,7 @@ jobs:
 
   slack-notify:
     runs-on: ubuntu-latest
-    if: failure()
+    if: always()
     steps:
     - name: action-slack
       uses: 8398a7/action-slack@v3.12.0
