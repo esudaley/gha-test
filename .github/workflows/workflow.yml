@@ -42,7 +42,7 @@ jobs:
   slack-notify:
     if: failure() && (github.ref_name == 'main' || github.base_ref == 'main')
     runs-on: ubuntu-latest
-    needs: [sample-job]
+    needs: [sample-job, sample-job0]
     steps:
       - name: Get failed job 
         uses: actions/github-script@v6
@@ -55,11 +55,13 @@ jobs:
                 repo: context.repo.repo,
                 run_id: context.runId
                 });
+              
               for (let job of results.data.jobs){
                 if (job.conclusion === 'failure'){
                     return job.name
                 }
               }
+
       - run: echo ${{steps.failed-job.outputs.result}}
       - name: action-slack
         uses: 8398a7/action-slack@v3.12.0
