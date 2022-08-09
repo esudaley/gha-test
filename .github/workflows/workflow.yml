@@ -23,7 +23,7 @@ jobs:
                 repo: context.repo.repo,
                 run_id: context.runId
                 });
-             console.log("SUDALEY", results)
+             console.log("SUDALEY", JSON.stringify(results))
   # test-api: 
   #   runs-on: ubuntu-latest
   #   steps:
