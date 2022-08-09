@@ -2,6 +2,7 @@ name: test-workflow1
 
 on:
   push:
+  pull_request: 
 
 jobs:
   # test-api: 
