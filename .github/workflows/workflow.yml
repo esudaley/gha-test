@@ -8,13 +8,19 @@ jobs:
   sample-job0:  
     runs-on: ubuntu-latest
     steps:
-      - run: echo "CHROME_VERSION=$(google-chrome --product-version) >> $GITHUB_ENV"
+       - name: Checkout
+         uses: actions/checkout@v3
+
+       - run: npm install --only=dev
+
       
-      - if: contains(env.CHROME_VERSION, '104') == false  
-        uses: esudaley/setup-browser@main
-        with:
-          browser: chrome
-          version: latest
+      # - run: echo "CHROME_VERSION=$(google-chrome --product-version) >> $GITHUB_ENV"
+      
+      # - if: contains(env.CHROME_VERSION, '104') == false  
+      #   uses: esudaley/setup-browser@main
+      #   with:
+      #     browser: chrome
+      #     version: latest
       
 
   # get-job:
