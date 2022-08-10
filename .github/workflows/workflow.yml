@@ -8,12 +8,13 @@ jobs:
   sample-job0:  
     runs-on: ubuntu-latest
     steps:
-      - name: Setup Browser
-        uses: esudaley/setup-browser@main
+      - run: echo "CHROME_VERSION=$(google-chrome --product-version) >> $GITHUB_ENV
+      
+      - if: (!contains(env.CHROME_VERSION, '104'))  
+        uses: abhi1693/setup-browser@latest
         with:
-          browser: firefox
+          browser: chrome
           version: latest
-      - run: firefox --version
       
 
   # get-job:
