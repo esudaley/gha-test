@@ -40,7 +40,8 @@ jobs:
   #   - run: exit 1
 
   slack-notify:
-    if: failure() && (contains(['main', 'test-branch'], github.ref_name) || contains(['main', 'test-branch', github.base_ref)]))
+    # if: failure() && (contains(['main', 'test-branch'], github.ref_name) || contains(['main', 'test-branch', github.base_ref)]))
+    if: failure() && (contains(fromJSON('["main", "test-branch"]'), github.ref_name)
     runs-on: ubuntu-latest
     needs: [sample-job]
     steps:
