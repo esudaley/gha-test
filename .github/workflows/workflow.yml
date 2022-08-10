@@ -41,9 +41,7 @@ jobs:
 
   slack-notify:
     # if: failure() && (contains(['main', 'test-branch'], github.ref_name) || contains(['main', 'test-branch', github.base_ref)]))
-    env: 
-      branches: '["main", "test-branch"]'
-    if: failure() && (contains(fromJSON(env.branches), github.ref_name) || contains(fromJSON(env.branches), github.base_ref))
+    if: failure() && (contains(fromJSON('["main", "test-branch"]'), github.ref_name) || contains(fromJSON('["main", "test-branch"]'), github.base_ref))
     runs-on: ubuntu-latest
     needs: [sample-job]
     steps:
