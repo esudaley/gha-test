@@ -13,7 +13,7 @@ jobs:
         with:
           browser: firefox
           version: latest
-      - run: google-chrome --product-version
+      - run: firefox --version
       
 
   # get-job:
