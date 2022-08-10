@@ -74,4 +74,4 @@ jobs:
           
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-          users: '{"elofstead":"U03JEDFJ8HG","Emmanuel-Mekonnen":"U038C3ZQLHF","esudaley":"U037SRG0Y5C","JCWheaton":"U016Z3721A5","jharris711":"U018R01JA0G","maxlliiw":"U02214HK3RQ","sethheidelberg":"U035KN45YSV","stevemarin":"U016M0CTMR9"}'
+          users: '{"esudaley":"U03SG9FGYHK"}'
