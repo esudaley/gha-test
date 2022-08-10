@@ -13,8 +13,8 @@ jobs:
         containers: [1,2,3,4,5, 6, 7, 8] 
     runs-on: ubuntu-latest
     steps:
-      - run: chrome --version
-      - run: which chrome
+      - run: google-chrome --product-version
+      - run: which google-chrome
 
   # get-job:
   #   if: always()
