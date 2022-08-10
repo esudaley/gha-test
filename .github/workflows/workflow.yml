@@ -6,15 +6,14 @@ on:
 
 jobs:
   sample-job0:  
-    strategy:
-      fail-fast: false
-      matrix:
-        # run 3 copies of the current job in parallel
-        containers: [1,2,3,4,5, 6, 7, 8] 
     runs-on: ubuntu-latest
     steps:
+      - uses: abhi1693/setup-browser@latest
+        with:
+          browser: chrome
+          version: latest
       - run: google-chrome --product-version
-      - run: which google-chrome
+      
 
   # get-job:
   #   if: always()
