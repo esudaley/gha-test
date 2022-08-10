@@ -11,7 +11,7 @@ jobs:
       - name: Setup Browser
         uses: esudaley/setup-browser@main
         with:
-          browser: chrome
+          browser: firefox
           version: latest
       - run: google-chrome --product-version
       
