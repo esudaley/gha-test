@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Setup Browser
-        uses: esudaley/setup-browser
+        uses: esudaley/setup-browser@main
         with:
           browser: chrome
           version: latest
