@@ -8,7 +8,7 @@ jobs:
   sample-job0:  
     runs-on: ubuntu-latest
     steps:
-      - uses: abhi1693/setup-browser@latest
+      - uses: abhi1693/setup-browser@v0.3.1
         with:
           browser: chrome
           version: latest
