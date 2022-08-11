@@ -27,9 +27,9 @@ jobs:
           cache-env: true
           cache-env-key: ${{ runner.os }}-${{ hashFiles('api/allen.yml') }}
 
-      - name: Activate env
-        run: |
-          micromamba activate allen
+      # - name: Activate env
+      #   run: |
+      #     micromamba activate allen
 
       - run: uvicorn api.test-api:app &
 
