@@ -6,14 +6,14 @@ on:
 
 jobs:
   sample-job0:  
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     strategy:
       matrix:
         container: [1,2,3,4,5,6,7,8,9]
     steps:
       - run: echo "CHROME_VERSION=$(google-chrome --product-version)" >> $GITHUB_ENV
       
-      - if: ${{!contains(env.CHROME_VERSION, '104')}}
+      - if: ${{contains(env.CHROME_VERSION, '104')}}
         run: exit 1
       # - name: Checkout
       #   uses: actions/checkout@v3
