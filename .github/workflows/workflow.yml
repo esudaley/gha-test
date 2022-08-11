@@ -7,12 +7,13 @@ on:
 jobs:
   sample-job:  
     runs-on: ubuntu-22.04
+    container: cypress/browsers:node16.14.2-slim-chrome103-ff102 
     steps:
       # - uses: actions/setup-python@v4
+      - run: pwd
       #   with:
       #     python-version: '3.10'
       # - run: python --version
-      - run: docker run cypress/browsers:node16.14.2-slim-chrome103-ff102 
       # - name: Checkout
       #   uses: actions/checkout@v3
         
