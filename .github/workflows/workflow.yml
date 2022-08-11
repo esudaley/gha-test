@@ -7,9 +7,9 @@ on:
 jobs:
   sample-job:  
     runs-on: ubuntu-22.04
-    container: cypress/included:9.4.1
     steps:
-      - run: pip -v
+      - uses: cypress/included:9.4.1
+        run: pwd
       # - name: Checkout
       #   uses: actions/checkout@v3
         
