@@ -12,7 +12,6 @@ jobs:
       #   with:
       #     python-version: '3.10'
       # - run: python --version
-      - run: firefox -v
       - run: sudo apt install firefox; firefox -v
       # - name: Checkout
       #   uses: actions/checkout@v3
