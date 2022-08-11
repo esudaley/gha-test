@@ -7,7 +7,7 @@ on:
 jobs:
   sample-job:  
     runs-on: ubuntu-22.04
-    container: cypress/browsers:node16.14.2-slim-chrome103-ff102 
+    container:  
     steps:
       # - uses: actions/setup-python@v4
       -  name: Checkout 
