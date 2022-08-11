@@ -26,7 +26,6 @@ jobs:
 
       - name: Activate env
         run: |
-          'eval "$(micromamba shell hook --shell=)"'
           micromamba activate allen
 
       - run: uvicorn api.test-api:app &
