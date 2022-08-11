@@ -13,7 +13,7 @@ jobs:
     steps:
       - run: echo "CHROME_VERSION=$(google-chrome --product-version)" >> $GITHUB_ENV
       
-      - if: ${{!contains(env.CHROME_VERSION, '104')}}
+      - if: ${{!contains(env.CHROME_VERSION, '103')}}
         run: exit 0
       # - name: Checkout
       #   uses: actions/checkout@v3
