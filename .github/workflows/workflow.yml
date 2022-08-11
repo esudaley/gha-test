@@ -7,7 +7,10 @@ on:
 jobs:
   sample-job:  
     runs-on: ubuntu-22.04
-    container:  
+    services:
+      redis:
+        image: redis
+    container: cypress/browsers:node16.14.2-slim-chrome103-ff102 
     steps:
       # - uses: actions/setup-python@v4
       -  name: Checkout 
@@ -20,6 +23,11 @@ jobs:
           environment-file: api/allen.yml
           cache-env: true
           cache-env-key: ${{ runner.os }}-${{ hashFiles('api/allen.yml') }}
+
+      - run: uvicorn api.test-api:app &
+
+      - run: "curl localhost:8000"
+
       #   with:
       #     python-version: '3.10'
       # - run: python --version
