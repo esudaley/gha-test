@@ -2,7 +2,7 @@ from fastapi import FastAPI
 import redis 
 app = FastAPI()
 
-r = redis.Redis(host='localhost', port=6379)
+r = redis.Redis(host='redis', port=6379)
 r.set("test", "Hello World!")
 
 @app.get("/")
