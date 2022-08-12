@@ -12,4 +12,4 @@ print(h)
 def root ():
 # create connection to the redis cluster
   # test = r.get("test")
-  return {"message": "test"}
+  return {"message": h}
