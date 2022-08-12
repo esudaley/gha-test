@@ -10,36 +10,41 @@ jobs:
     defaults:
       run:
         shell: bash -l {0}
-    services:
-      redis:
-        image: redis
-    container:
-      image: cypress/browsers:node16.14.2-slim-chrome103-ff102 
-      env:
-        INSIDEDOCKER: 1
     steps:
-      # - uses: actions/setup-python@v4
       - name: Checkout 
         uses: actions/checkout@v3
-      # - uses: actions/setup-python@v4
-      #   with:
-      #     python-version: '3.10' 
 
-      - name: Install Micromamba env
-        uses: mamba-org/provision-with-micromamba@main
-        with:
-          environment-file: api/allen.yml
-          cache-env: true
-          cache-env-key: ${{ runner.os }}-${{ hashFiles('api/allen.yml') }}
+      - run: conda create env -f api/allen.yml
+    # services:
+    #   redis:
+    #     image: redis
+    # container:
+    #   image: cypress/browsers:node16.14.2-slim-chrome103-ff102 
+    #   env:
+    #     INSIDEDOCKER: 1
+    # steps:
+    #   # - uses: actions/setup-python@v4
+    #   - name: Checkout 
+    #     uses: actions/checkout@v3
+    #   # - uses: actions/setup-python@v4
+    #   #   with:
+    #   #     python-version: '3.10' 
 
-      - run: python location.py
-      # - name: Activate env
-      #   run: |
-      #     micromamba activate allen
+    #   - name: Install Micromamba env
+    #     uses: mamba-org/provision-with-micromamba@main
+    #     with:
+    #       environment-file: api/allen.yml
+    #       cache-env: true
+    #       cache-env-key: ${{ runner.os }}-${{ hashFiles('api/allen.yml') }}
 
-      - run: uvicorn api.test-api:app &
+    #   - run: python location.py
+    #   # - name: Activate env
+    #   #   run: |
+    #   #     micromamba activate allen
 
-      - run: "curl localhost:8000"
+    #   - run: uvicorn api.test-api:app &
+
+    #   - run: "curl localhost:8000"
 
       # - uses: actions/cache@v3
       #   id: npm-cache # use this to check for `cache-hit` ==> if: steps.npm-cache.outputs.cache-hit != 'true'
