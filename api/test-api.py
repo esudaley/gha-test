@@ -1,8 +1,10 @@
 from fastapi import FastAPI
 import redis 
-app = FastAPI()
+import os
 
-r = redis.Redis(host='redis', port=6379)
+app = FastAPI()
+h = "redis" if "INSIDEDOCKER" in os.environ else "localhost",
+r = redis.Redis(host=h, port=6379)
 r.set("test", "Hello World!")
 
 @app.get("/")
