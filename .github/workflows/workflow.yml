@@ -19,7 +19,10 @@ jobs:
       # - uses: actions/setup-python@v4
       - name: Checkout 
         uses: actions/checkout@v3
-      
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10' 
+          
       - run: python location.py
       # - name: Install Micromamba env
       #   uses: mamba-org/provision-with-micromamba@main
