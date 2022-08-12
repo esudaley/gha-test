@@ -14,7 +14,7 @@ jobs:
       - name: Checkout 
         uses: actions/checkout@v3
 
-      - run: conda env create -f api/allen.yml
+      - run: conda --version
     # services:
     #   redis:
     #     image: redis
