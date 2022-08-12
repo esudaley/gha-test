@@ -19,8 +19,7 @@ jobs:
       # - uses: actions/setup-python@v4
       -  name: Checkout 
          uses: actions/checkout@v3
-      - run: ls api
-      - run: pwd
+      
       - name: Install Micromamba env
         uses: mamba-org/provision-with-micromamba@main
         with:
