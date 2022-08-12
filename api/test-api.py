@@ -11,6 +11,6 @@ r.set("test", "Hello World!")
 @app.get("/")
 def root ():
 # create connection to the redis cluster
-  test = r.get("Hello")
+  test = r.get(test)
   r.ping()
   return {"message": test}
