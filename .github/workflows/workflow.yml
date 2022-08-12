@@ -16,9 +16,9 @@ jobs:
     container:
       image: cypress/browsers:node16.14.2-slim-chrome103-ff102 
     steps:
-      - uses: actions/setup-python@v4
+      # - uses: actions/setup-python@v4
       - name: Checkout 
-      #   uses: actions/checkout@v3
+        uses: actions/checkout@v3
       # - uses: actions/setup-python@v4
       #   with:
       #     python-version: '3.10' 
