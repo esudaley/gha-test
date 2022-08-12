@@ -3,7 +3,8 @@ name: test-workflow1
 on:
   push:
   pull_request: 
-
+env:
+ INSIDEDOCKER: 1
 jobs:
   sample-job:  
     runs-on: ubuntu-22.04
