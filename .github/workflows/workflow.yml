@@ -3,8 +3,7 @@ name: test-workflow1
 on:
   push:
   pull_request: 
-env:
- INSIDEDOCKER: 1
+
 jobs:
   sample-job:  
     runs-on: ubuntu-22.04
@@ -16,6 +15,8 @@ jobs:
         image: redis
     container:
       image: cypress/browsers:node16.14.2-slim-chrome103-ff102 
+      env:
+        INSIDEDOCKER: 1
     steps:
       # - uses: actions/setup-python@v4
       - name: Checkout 
