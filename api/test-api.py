@@ -11,5 +11,5 @@ print(h)
 @app.get("/")
 def root ():
 # create connection to the redis cluster
-  test = r.get("test")
-  return {"message": test}
+  # test = r.get("test")
+  return {"message": "test"}
