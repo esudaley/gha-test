@@ -10,7 +10,7 @@ jobs:
       matrix:
         browser: ["chrome", "firefox"]
 
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     defaults:
       run:
         shell: bash -l {0}
