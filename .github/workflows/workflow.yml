@@ -14,7 +14,27 @@ jobs:
       - name: Checkout 
         uses: actions/checkout@v3
 
-      - run: conda --version
+      - name: Install env 
+        run:  |
+          conda env create -n test-app -f test-app/api/env.yml
+          conda activate test-app
+      
+      - name: Run GUI
+      - run: |
+          cd test-app/gui
+          npm install
+          npm start &
+      
+      - name: Run API
+        run: |
+          cd test-app/api
+          uvicorn api:app &
+      
+      - name: Cypress
+        run: |
+          cd test-app/gui
+          npx cypress run
+  
     # services:
     #   redis:
     #     image: redis
@@ -22,10 +42,7 @@ jobs:
     #   image: cypress/browsers:node16.14.2-slim-chrome103-ff102 
     #   env:
     #     INSIDEDOCKER: 1
-    # steps:
-    #   # - uses: actions/setup-python@v4
-    #   - name: Checkout 
-    #     uses: actions/checkout@v3
+
     #   # - uses: actions/setup-python@v4
     #   #   with:
     #   #     python-version: '3.10' 
