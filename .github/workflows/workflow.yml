@@ -16,6 +16,7 @@ jobs:
 
       - name: Install env 
         run:  |
+          conda init bash
           conda env create -n test-app -f test-app/api/env.yml
           
       - run: conda activate test-app
