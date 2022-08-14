@@ -20,7 +20,7 @@ jobs:
           conda activate test-app
       
       - name: Run GUI
-      - run: |
+        run: |
           cd test-app/gui
           npm install
           npm start &
