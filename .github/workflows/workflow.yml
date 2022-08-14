@@ -22,24 +22,22 @@ jobs:
         run:  |
           $CONDA/bin/conda env update -f test-app/api/env.yml --name base
       
+      - name: Run GUI
+        run: |
+          cd test-app/gui
+          npm install
+          npm start &
+      
       - name: Run API
         run: |
           cd test-app/api
           $CONDA/bin/uvicorn api:app &
       
-      - name: Run Cypress  
-        uses: cypress-io/github-action@v2
-        with:
-          working-directory: test-app/gui
-          start: npm start
-          runTests: false
-          # wait-on: "http://localhost:3000"
-          # wait-on-timeout: 90
-          # browser: ${{matrix.browser}}
-          # spec: "cypress/integration/*"
-      - run: | 
+      - name: Cypress
+        run: |
           cd test-app/gui
           npx cypress run --browser ${{matrix.browser}}
+  
     # services:
     #   redis:
     #     image: redis
