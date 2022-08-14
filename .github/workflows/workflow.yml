@@ -32,11 +32,14 @@ jobs:
         with:
           working-directory: test-app/gui
           start: npm start
-          wait-on: "http://localhost:3000"
-          wait-on-timeout: 90
-          browser: ${{matrix.browser}}
-          spec: "cypress/integration/*"
-  
+          runTests: false
+          # wait-on: "http://localhost:3000"
+          # wait-on-timeout: 90
+          # browser: ${{matrix.browser}}
+          # spec: "cypress/integration/*"
+      - run: | 
+          test-app/gui
+          npx cypress run --browser ${{matrix.browser}}
     # services:
     #   redis:
     #     image: redis
