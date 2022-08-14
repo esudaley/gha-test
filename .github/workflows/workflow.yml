@@ -18,22 +18,23 @@ jobs:
         run:  |
           conda env create -n app -f test-app/api/env.yml
           conda activate app
+          conda list
       
-      - name: Run GUI
-        run: |
-          cd test-app/gui
-          npm install
-          npm start &
+      # - name: Run GUI
+      #   run: |
+      #     cd test-app/gui
+      #     npm install
+      #     npm start &
       
-      - name: Run API
-        run: |
-          cd test-app/api
-          uvicorn api:app &
+      # - name: Run API
+      #   run: |
+      #     cd test-app/api
+      #     uvicorn api:app &
       
-      - name: Cypress
-        run: |
-          cd test-app/gui
-          npx cypress run
+      # - name: Cypress
+      #   run: |
+      #     cd test-app/gui
+      #     npx cypress run
   
     # services:
     #   redis:
