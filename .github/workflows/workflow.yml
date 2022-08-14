@@ -7,33 +7,32 @@ on:
 jobs:
   sample-job:  
     runs-on: ubuntu-22.04
+    defaults:
+      run:
+        shell: bash -l {0}
     steps:
       - name: Checkout 
         uses: actions/checkout@v3
 
       - name: Install env 
         run:  |
-          conda env create -n test-app -f test-app/api/env.yml
-
-      - run:    conda init bash    
-      - run: $CONDA/bin/activate  test-app
+          $CONDA/bin/conda env update --file env.yml
       
-      
-      - name: Run GUI
-        run: |
-          cd test-app/gui
-          npm install
-          npm start &
+      # - name: Run GUI
+      #   run: |
+      #     cd test-app/gui
+      #     npm install
+      #     npm start &
       
       - name: Run API
         run: |
           cd test-app/api
           uvicorn api:app &
       
-      - name: Cypress
-        run: |
-          cd test-app/gui
-          npx cypress run
+      # - name: Cypress
+      #   run: |
+      #     cd test-app/gui
+      #     npx cypress run
   
     # services:
     #   redis:
