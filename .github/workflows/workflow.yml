@@ -16,9 +16,9 @@ jobs:
 
       - name: Install env 
         run:  |
-          conda install uvicorn
-      - run:  |
-          $CONDA/bin/uvicorn --version
+          $CONDA/bin/conda env create -n app -f test-app/api/env.yml
+          $CONDA/bin/conda activate app
+      - run: $CONDA/bin/uvicorn --version
       
       # - name: Run GUI
       #   run: |
