@@ -35,7 +35,6 @@ jobs:
           wait-on: "http://localhost:3000"
           wait-on-timeout: 90
           browser: ${{matrix.browser}}
-          group: ${{matrix.browser}}
           spec: "cypress/integration/*"
   
     # services:
