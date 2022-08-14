@@ -17,23 +17,22 @@ jobs:
       - name: Install env 
         run:  |
           $CONDA/bin/conda env update -f test-app/api/env.yml --name base
-      - run: $CONDA/bin/uvicorn --version
       
-      # - name: Run GUI
-      #   run: |
-      #     cd test-app/gui
-      #     npm install
-      #     npm start &
+      - name: Run GUI
+        run: |
+          cd test-app/gui
+          npm install
+          npm start &
       
-      # - name: Run API
-      #   run: |
-      #     cd test-app/api
-      #     uvicorn api:app &
+      - name: Run API
+        run: |
+          cd test-app/api
+          uvicorn api:app &
       
-      # - name: Cypress
-      #   run: |
-      #     cd test-app/gui
-      #     npx cypress run
+      - name: Cypress
+        run: |
+          cd test-app/gui
+          npx cypress run
   
     # services:
     #   redis:
