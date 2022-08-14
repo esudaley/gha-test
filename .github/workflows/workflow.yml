@@ -6,9 +6,9 @@ on:
 
 jobs:
   sample-job:
-    strategy:
-      matrix:
-        browser: ["chrome", "firefox"]
+    # strategy:
+    #   matrix:
+    #     browser: ["chrome", "firefox"]
 
     runs-on: ubuntu-latest
     defaults:
@@ -22,21 +22,26 @@ jobs:
         run:  |
           $CONDA/bin/conda env update -f test-app/api/env.yml --name base
       
-      - name: Run GUI
-        run: |
-          cd test-app/gui
-          npm install
-          npm start &
-      
       - name: Run API
         run: |
           cd test-app/api
           $CONDA/bin/uvicorn api:app &
+
+      # - name: Run GUI
+      #   run: |
+      #     cd test-app/gui
+      #     npm install
+      #     npm start &
       
-      - name: Cypress
-        run: |
-          cd test-app/gui
-          npx cypress run --browser ${{matrix.browser}}
+      - name: Run Cypress  
+        uses: cypress-io/github-action@v4
+        with:
+          working-directory: test-app/gui
+          start: npm start
+          wait-on: "http://localhost:3000"
+          wait-on-timeout: 90
+          browser: firefox
+          spec: "cypress/integration/*"
   
     # services:
     #   redis:
