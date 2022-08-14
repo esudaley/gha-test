@@ -16,7 +16,7 @@ jobs:
 
       - name: Install env 
         run:  |
-          $CONDA/bin/conda env update --file test-app/api/env.yml
+          conda --version
       
       # - name: Run GUI
       #   run: |
