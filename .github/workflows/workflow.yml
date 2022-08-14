@@ -27,7 +27,7 @@ jobs:
       - name: Run API
         run: |
           cd test-app/api
-          uvicorn api:app &
+          $CONDA/bin/uvicorn api:app &
       
       - name: Cypress
         run: |
