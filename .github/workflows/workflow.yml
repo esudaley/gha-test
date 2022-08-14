@@ -38,7 +38,7 @@ jobs:
           # browser: ${{matrix.browser}}
           # spec: "cypress/integration/*"
       - run: | 
-          test-app/gui
+          cd test-app/gui
           npx cypress run --browser ${{matrix.browser}}
     # services:
     #   redis:
