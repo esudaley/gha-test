@@ -7,9 +7,6 @@ on:
 jobs:
   sample-job:  
     runs-on: ubuntu-22.04
-    # defaults:
-      # run:
-        # shell: bash -l {0}
     steps:
       - name: Checkout 
         uses: actions/checkout@v3
@@ -19,7 +16,7 @@ jobs:
           conda init bash
           conda env create -n test-app -f test-app/api/env.yml
           
-      - run: conda activate test-app
+      - run: $CONDA/bin/activate  test-app
       
       - name: Run GUI
         run: |
