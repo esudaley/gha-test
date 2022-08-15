@@ -18,9 +18,9 @@ jobs:
       - name: Checkout 
         uses: actions/checkout@v3
 
-      # - name: Install env 
-      #   run:  |
-      #     $CONDA/bin/conda env update -f test-app/api/env.yml --name base
+      - name: Install env 
+        run:  |
+          $CONDA/bin/conda env update -f test-app/api/env.yml --name base
       
       - name: Run API
         run: |
