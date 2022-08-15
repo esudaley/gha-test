@@ -34,7 +34,7 @@ jobs:
       #     npm start &
       
       - name: Run Cypress  
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v4
         with:
           working-directory: test-app/gui
           start: npm start
