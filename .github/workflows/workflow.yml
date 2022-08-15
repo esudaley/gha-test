@@ -18,14 +18,14 @@ jobs:
       - name: Checkout 
         uses: actions/checkout@v3
 
-      - name: Install env 
-        run:  |
-          $CONDA/bin/conda env update -f test-app/api/env.yml --name base
+      # - name: Install env 
+      #   run:  |
+      #     $CONDA/bin/conda env update -f test-app/api/env.yml --name base
       
-      - name: Run API
-        run: |
-          cd test-app/api
-          $CONDA/bin/uvicorn api:app &
+      # - name: Run API
+      #   run: |
+      #     cd test-app/api
+      #     $CONDA/bin/uvicorn api:app &
 
       # - name: Run GUI
       #   run: |
@@ -33,7 +33,8 @@ jobs:
       #     npm install
       #     npm start &
       - run: firefox --version
-      
+      - run: which firefox
+
       - name: Run Cypress  
         uses: cypress-io/github-action@v4
         with:
