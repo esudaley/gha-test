@@ -41,7 +41,7 @@ jobs:
           start: npm start
           wait-on: "http://localhost:3000"
           wait-on-timeout: 90
-          browser: firefox
+          browser: /usr/bin/firefox
           spec: "cypress/integration/*"
   
     # services:
