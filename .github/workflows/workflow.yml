@@ -32,6 +32,7 @@ jobs:
       #     cd test-app/gui
       #     npm install
       #     npm start &
+      - run: firefox --version
       
       - name: Run Cypress  
         uses: cypress-io/github-action@v4
