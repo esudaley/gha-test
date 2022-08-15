@@ -22,10 +22,9 @@ jobs:
       #   run:  |
       #     $CONDA/bin/conda env update -f test-app/api/env.yml --name base
       
-      # - name: Run API
-      #   run: |
-      #     cd test-app/api
-      #     $CONDA/bin/uvicorn api:app &
+      - name: Run API
+        run: |
+          $CONDA/bin/uvicorn api.api:app &
 
       # - name: Run GUI
       #   run: |
