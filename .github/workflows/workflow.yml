@@ -16,7 +16,7 @@ jobs:
         shell: bash -l {0}
     steps:
       - run: echo $PATH
-      - run: "PATH=$PATH:/usr/bin/firefox"
+      - run: "export PATH=$PATH:/usr/bin/firefox"
       - run: echo $PATH
 
       # - name: Checkout 
