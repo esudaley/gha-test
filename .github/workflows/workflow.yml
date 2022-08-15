@@ -16,8 +16,8 @@ jobs:
         shell: bash -l {0}
     steps:
       - run: sed 's/:/\n/g' <<< "$PATH"
-      - run: echo "/usr/bin/firefox" >> $GITHUB_PATH   
-      - run: sed 's/:/\n/g' <<< "$PATH"
+      # - run: echo "/usr/bin/firefox" >> $GITHUB_PATH   
+      # - run: sed 's/:/\n/g' <<< "$PATH"
 
       - name: Checkout 
         uses: actions/checkout@v3
