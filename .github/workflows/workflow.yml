@@ -30,23 +30,25 @@ jobs:
         run: |
           $CONDA/bin/uvicorn api.api:app &
 
-      # - name: Run GUI
-      #   run: |
-      #     cd test-app/gui
-      #     npm install
-      #     npm start &
+      - name: Run GUI
+        run: |
+          cd gui
+          npm install
+          npm start &
       - run: firefox --version
       - run: which firefox
-
-      - name: Run Cypress  
-        uses: cypress-io/github-action@v4
-        with:
-          working-directory: gui
-          start: npm start
-          wait-on: "http://localhost:3000"
-          wait-on-timeout: 90
-          browser: firefox
-          spec: "cypress/integration/*"
+      - run: |
+          cd gui
+          npx cypress run --browser firefox
+      # - name: Run Cypress  
+      #   uses: cypress-io/github-action@v4
+      #   with:
+      #     working-directory: gui
+      #     start: npm start
+      #     wait-on: "http://localhost:3000"
+      #     wait-on-timeout: 90
+      #     browser: firefox
+      #     spec: "cypress/integration/*"
   
     # services:
     #   redis:
