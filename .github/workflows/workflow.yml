@@ -20,7 +20,7 @@ jobs:
 
       - name: Install env 
         run:  |
-          $CONDA/bin/conda env update -f test-app/api/env.yml --name base
+          $CONDA/bin/conda env update -f api/env.yml --name base
       
       - name: Run API
         run: |
