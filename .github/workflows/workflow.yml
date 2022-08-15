@@ -19,34 +19,34 @@ jobs:
       - run: echo "/usr/bin/firefox" >> $GITHUB_PATH   
       - run: sed 's/:/\n/g' <<< "$PATH"
 
-      # - name: Checkout 
-      #   uses: actions/checkout@v3
+      - name: Checkout 
+        uses: actions/checkout@v3
 
-      # - name: Install env 
-      #   run:  |
-      #     $CONDA/bin/conda env update -f api/env.yml --name base
+      - name: Install env 
+        run:  |
+          $CONDA/bin/conda env update -f api/env.yml --name base
       
-      # - name: Run API
+      - name: Run API
+        run: |
+          $CONDA/bin/uvicorn api.api:app &
+
+      # - name: Run GUI
       #   run: |
-      #     $CONDA/bin/uvicorn api.api:app &
+      #     cd test-app/gui
+      #     npm install
+      #     npm start &
+      - run: firefox --version
+      - run: which firefox
 
-      # # - name: Run GUI
-      # #   run: |
-      # #     cd test-app/gui
-      # #     npm install
-      # #     npm start &
-      # - run: firefox --version
-      # - run: which firefox
-
-      # - name: Run Cypress  
-      #   uses: cypress-io/github-action@v4
-      #   with:
-      #     working-directory: gui
-      #     start: npm start
-      #     wait-on: "http://localhost:3000"
-      #     wait-on-timeout: 90
-      #     browser: firefox
-      #     spec: "cypress/integration/*"
+      - name: Run Cypress  
+        uses: cypress-io/github-action@v4
+        with:
+          working-directory: gui
+          start: npm start
+          wait-on: "http://localhost:3000"
+          wait-on-timeout: 90
+          browser: firefox
+          spec: "cypress/integration/*"
   
     # services:
     #   redis:
