@@ -10,6 +10,8 @@ jobs:
   
     steps:
       - name: fail
-        run: exit 1
+        run: |
+          exit 1
+          echo "::set-output name=TEST::strawberry"
         continue-on-error: true
-      - run: echo continued
+      - run: echo here is ${{steps.output.TEST}}
