@@ -6,61 +6,10 @@ on:
 
 jobs:
   sample-job:
-    # strategy:
-    #   matrix:
-    #     browser: ["chrome", "firefox"]
-
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: bash -l {0}
-    services:
-      redis:
-        image: redis
-        env:
-          appendonly: yes
-          save: "60 1"
-
-    steps:
-      - run: sed 's/:/\n/g' <<< "$PATH"
-      # - run: echo "/usr/bin/firefox" >> $GITHUB_PATH   
-      # - run: sed 's/:/\n/g' <<< "$PATH"
-
-      # - name: Checkout 
-      #   uses: actions/checkout@v3
-
-      # - name: Install env 
-      #   run:  |
-      #     $CONDA/bin/conda env update -f api/env.yml --name base
-      
-      # - name: Run API
-      #   run: |
-      #     $CONDA/bin/uvicorn api.api:app &
-
-      # - name: Run GUI
-      #   run: |
-      #     cd gui
-      #     npm install
-      #     npm start &
-
-      # - run: firefox --version
-      # - run: which firefox
-      
-      # - uses: browser-actions/setup-firefox@latest
-
-      # - run: firefox --version
-      # - run: which firefox
-      
-      # - run: |
-      #     cd gui
-      #     npx cypress run --browser firefox
-      # - name: Run Cypress  
-      #   uses: cypress-io/github-action@v4
-      #   with:
-      #     working-directory: gui
-      #     start: npm start
-      #     wait-on: "http://localhost:3000"
-      #     wait-on-timeout: 90
-      #     browser: firefox
-      #     spec: "cypress/integration/*"
   
+    steps:
+      - name: fail
+        run: exit 1
+        continue-on-error: true
+      - run: echo continued
