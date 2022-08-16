@@ -14,4 +14,4 @@ jobs:
           exit 1
           echo "::set-output name=TEST::strawberry"
         continue-on-error: true
-      - run: echo here is ${{github.event}}
+      - run: echo here is ${{toJSON(github.event)}}
