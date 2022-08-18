@@ -2,7 +2,6 @@ name: test-workflow1
 
 on:
   push:
-  pull_request: 
 
 jobs:
   sample-job:
@@ -12,5 +11,5 @@ jobs:
       - name: fail
         uses: browser-actions/setup-firefox@latest
         with:
-          firefox-version: 91.6-eser
+          firefox-version: 91.6.0-esr
       - run: firefox --version
