@@ -1,1 +1,1 @@
-test branch protections
+test branch protections reject commit
