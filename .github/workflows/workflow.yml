@@ -2,77 +2,11 @@ name: test-workflow1
 
 on:
   push:
-  pull_request: 
 
 jobs:
-  sample-job0:  
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo sometext0;
-
   sample-job:
     runs-on: ubuntu-latest
+  
     steps:
-      - run: echo sometext; exit 1
-  # get-job:
-  #   if: always()
-  #   needs: [sample-job]
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/github-script@v6
-  #       id: failed-job
-  #       with:
-  #         script: |
-  #            const results = await github.rest.actions.listJobsForWorkflowRun({
-  #               owner: context.repo.owner,
-  #               repo: context.repo.repo,
-  #               run_id: context.runId
-  #               });
-  #             results.data.jobs.forEach(job => {
-  #               if (job.conclusion === 'failure'){
-  #                 console.log(job.name)
-  #                 return job.name
-  #               }
-  #             })
-  # test-api: 
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #   - run: exit 1
-
-  slack-notify:
-    # if: failure() && (contains(['main', 'test-branch'], github.ref_name) || contains(['main', 'test-branch', github.base_ref)]))
-    if: failure() && (contains(fromJSON('["main", "test-branch"]'), github.ref_name) || contains(fromJSON('["main", "test-branch"]'), github.base_ref))
-    runs-on: ubuntu-latest
-    needs: [sample-job]
-    steps:
-      - name: Get failed job 
-        uses: actions/github-script@v6
-        id: failed-job
-        with:
-          result-encoding: string
-          script: |
-             const results = await github.rest.actions.listJobsForWorkflowRun({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                run_id: context.runId
-                });
-              for (let job of results.data.jobs){
-                if (job.conclusion === 'failure'){
-                    return job.name
-                }
-              }
-      - run: echo ${{steps.failed-job.outputs.result}}
-      - name: action-slack
-        uses: 8398a7/action-slack@v3.12.0
-        with:
-          mention: ${{fromJSON(env.users)[github.actor]}} 
-          if_mention: always
-          text: "Check Github Actions"
-          author_name: ${{github.job}}
-          status: failure
-          job_name: ${{steps.failed-job.outputs.result}}
-          fields: commit, message, job, ref
-          
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-          users: '{"esudaley":"U03SG9FGYHK"}'
+      - name: fail
+        run: exit 1
