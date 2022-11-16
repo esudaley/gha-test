@@ -8,5 +8,8 @@ jobs:
     runs-on: ubuntu-latest
   
     steps:
-      - name: fail
-        run: exit 1
+      - name: Download Firefox
+        if: ${{matrix.browser == 'firefox'}}
+        uses: browser-actions/setup-firefox@latest
+        with:
+          firefox-version: 91.6.0esr
