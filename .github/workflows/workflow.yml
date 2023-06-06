@@ -1,14 +1,14 @@
-name: test-workflow1
-
+name: "Cypress Testing"
 on:
   push:
-
 jobs:
-  sample-job:
+  pre: 
+    name: Init
     runs-on: ubuntu-latest
-  
+    outputs:
+      url: ${{ steps.url.outputs.url }}
     steps:
-      - name: Download Firefox
-        uses: browser-actions/setup-firefox@latest
-        with:
-          firefox-version: 91.6.0esr
+    - id: url
+      name: Set URL
+      run: |
+        echo here on test-branch 
