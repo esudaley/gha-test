@@ -1,6 +1,7 @@
 name: "Cypress Testing"
 on:
   push:
+  pull_request:
 jobs:
   pre: 
     name: Init
