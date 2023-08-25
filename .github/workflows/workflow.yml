@@ -1,10 +1,10 @@
 name: "GHA Test"
 on:
-  push:
+  push: 
 jobs:
   basic:
     runs-on: ubuntu-latest
-    if: contains(['master', 'testing'], ${{ github.ref_name }})
+    if: contains(fromJSON('["master", "testing"]', ${{ github.ref_name }})
     steps:
     - name: echo branch
       run: echo ${{ github.ref_name }}
