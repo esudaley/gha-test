@@ -1,7 +1,7 @@
 name: "GHA Test"
 on:
   push: 
-jobs:
+jobs: 
   basic:
     runs-on: ubuntu-latest
     if: > 
