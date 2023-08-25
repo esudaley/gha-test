@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     if: > 
       contains(fromJSON('["main", "testing"]'), github.ref_name) ||
-      contains(ref_type, 'tag') ||
+      contains(github.ref_type, 'tag') ||
       contains(github.event.head_commit.message, ':build')
     steps:
     - name: echo branch
@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     if: > 
       contains(fromJSON('["main", "testing"]'), github.ref_name) ||
-      contains(ref_type, 'tag') ||
+      contains(github.ref_type, 'tag') ||
       contains(github.event.head_commit.message, ':build')
     steps:
     - name: step 1
@@ -26,7 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     if: > 
       contains(fromJSON('["main", "testing"]'), github.ref_name) ||
-      contains(ref_type, 'tag') ||
+      contains(github.ref_type, 'tag') ||
       contains(github.event.head_commit.message, ':build')
     steps:
     - name: step 1
