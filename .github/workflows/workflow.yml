@@ -2,15 +2,21 @@ name: "GHA Test"
 on:
   push: 
 jobs: 
-  basic:
+  basic: 
     runs-on: ubuntu-latest
-    if: contains(fromJSON('["master", "testing"]'), github.ref_name)
+    if: > 
+      contains(fromJSON('["main", "testing"]'), github.ref_name) ||
+      contains(github.ref_type, 'tag') ||
+      contains(github.event.head_commit.message, ':build')
     steps:
     - name: echo branch
       run: echo ${{ github.ref_name }}
   job1:
     runs-on: ubuntu-latest
-    if: contains(github.event.head_commit.message, ':build')
+    if: > 
+      contains(fromJSON('["main", "testing"]'), github.ref_name) ||
+      contains(github.ref_type, 'tag') ||
+      contains(github.event.head_commit.message, ':build')
     steps:
     - name: step 1
       run: echo test step 1 
@@ -18,7 +24,10 @@ jobs:
       run: echo test step 2 
   job2:
     runs-on: ubuntu-latest
-    if: contains(github.event.head_commit.message, ':build')
+    if: > 
+      contains(fromJSON('["main", "testing"]'), github.ref_name) ||
+      contains(github.ref_type, 'tag') ||
+      contains(github.event.head_commit.message, ':build')
     steps:
     - name: step 1
       run: echo test step 1 
