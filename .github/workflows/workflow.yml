@@ -2,7 +2,7 @@ name: "GHA Test"
 on:
   push: 
 jobs: 
-  basic:
+  basic: 
     runs-on: ubuntu-latest
     if: > 
       contains(fromJSON('["main", "testing"]'), github.ref_name) ||
