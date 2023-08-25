@@ -9,8 +9,10 @@ jobs:
       contains(github.ref_type, 'tag') ||
       contains(github.event.head_commit.message, ':build')
     steps:
-    - name: echo branch
+    - name: Branch
       run: echo ${{ github.ref_name }}
+    - name: Event
+      run: echo ${{  github.ref_type }}
   job1:
     runs-on: ubuntu-latest
     if: > 
