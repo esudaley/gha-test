@@ -1,15 +1,26 @@
-name: "Cypress Testing"
+name: "GHA Test"
 on:
   push:
-  pull_request:
 jobs:
-  pre: 
-    name: Init
+  basic:
     runs-on: ubuntu-latest
-    outputs:
-      url: ${{ steps.url.outputs.url }}
+    if: contains(['master', 'testing'], ${{ github.ref_name }})
     steps:
-    - id: url
-      name: Set URL
-      run: |
-        echo here on test-branch 
+    - name: echo branch
+      run: echo ${{ github.ref_name }}
+  job1:
+    runs-on: ubuntu-latest
+    if: contains(github.event.head_commit.message, ':build')
+    steps:
+    - name: step 1
+      run: echo test step 1 
+    - name: step 2
+      run: echo test step 2 
+  job2:
+    runs-on: ubuntu-latest
+    if: contains(github.event.head_commit.message, ':build')
+    steps:
+    - name: step 1
+      run: echo test step 1 
+    - name: step 2
+      run: echo test step 2 
