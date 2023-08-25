@@ -1,5 +1,5 @@
 name: "GHA Test"
-on:
+on: 
   push: 
 jobs: 
   info: 
