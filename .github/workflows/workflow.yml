@@ -2,16 +2,16 @@ name: "GHA Test"
 on:
   push: 
 jobs: 
-  basic: 
+  info: 
     runs-on: ubuntu-latest
     if: > 
       contains(fromJSON('["main", "testing"]'), github.ref_name) ||
       contains(github.ref_type, 'tag') ||
       contains(github.event.head_commit.message, ':build')
     steps:
-    - name: Branch
+    - name: Ref
       run: echo ${{ github.ref_name }}
-    - name: Event
+    - name: Type
       run: echo ${{  github.ref_type }}
   job1:
     runs-on: ubuntu-latest
