@@ -1,1 +1,1 @@
-[<video src="./vid.mp4" controls="controls" width="550" muted autoplay loop></video>](./vid.mov)
+[<video src="./vid.mov" controls="controls" width="550" muted autoplay loop></video>](./vid.mov)
