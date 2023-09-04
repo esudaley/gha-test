@@ -4,10 +4,6 @@ on:
 jobs: 
   info: 
     runs-on: ubuntu-latest
-    if: > 
-      contains(fromJSON('["main", "testing"]'), github.ref_name) ||
-      contains(github.ref_type, 'tag') ||
-      contains(github.event.head_commit.message, ':build')
     steps:
     - name: Ref
       run: echo ${{ github.ref_name }}
@@ -15,21 +11,15 @@ jobs:
       run: echo ${{  github.ref_type }}
   job1:
     runs-on: ubuntu-latest
-    if: > 
-      contains(fromJSON('["main", "testing"]'), github.ref_name) ||
-      contains(github.ref_type, 'tag') ||
-      contains(github.event.head_commit.message, ':build')
     steps:
     - name: step 1
-      run: echo test step 1 
+      run: exit 1
+      continue-on-error: true
     - name: step 2
       run: echo test step 2 
   job2:
     runs-on: ubuntu-latest
-    if: > 
-      contains(fromJSON('["main", "testing"]'), github.ref_name) ||
-      contains(github.ref_type, 'tag') ||
-      contains(github.event.head_commit.message, ':build')
+    needs: [job1]
     steps:
     - name: step 1
       run: echo test step 1 
