@@ -14,7 +14,6 @@ jobs:
     steps:
     - name: step 1
       run: exit 1
-      continue-on-error: true
     - name: step 2
       run: echo test step 2 
   job2:
