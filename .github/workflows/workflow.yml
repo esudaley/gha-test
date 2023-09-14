@@ -8,4 +8,4 @@ jobs:
       - name: pwd
         run: pwd
       - name: ls
-        run: ls
+        run: ls -R
