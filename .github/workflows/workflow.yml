@@ -5,6 +5,5 @@ jobs:
   info: 
     runs-on: ubuntu-latest
     steps:
-    - if: ${{ failure() }}
-      name: Ref
-      run: test.sh
+      - name: Ref
+        run: test.sh
