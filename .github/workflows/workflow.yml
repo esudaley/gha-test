@@ -6,4 +6,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Ref
-        run: test.sh
+        run: ${{ github.workspace}}/test.sh
