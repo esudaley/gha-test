@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: pwd
-        run: pwd
+        run: exit 1
         continue-on-error: true
       - name: ls
         run: ls -R
