@@ -8,5 +8,6 @@ jobs:
       - name: pwd
         run: exit 1
         continue-on-error: true
-      - name: ls
+      - if: failure()
+        name: ls
         run: ls -R
