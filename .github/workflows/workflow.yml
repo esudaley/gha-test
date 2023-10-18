@@ -5,9 +5,9 @@ jobs:
   info: 
     runs-on: ubuntu-latest
     steps:
-      - name: pwd
+      - id: test
+        name: pwd
         run: exit 1
         continue-on-error: true
-      - if: failure()
-        name: ls
-        run: ls -R
+      - name: ls
+        run: echo ${{ steps.test.outcome }}
