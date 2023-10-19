@@ -14,7 +14,8 @@ jobs:
         run: docker build -t test-app .
       - id: exit
         name: docker run 
-        run: $(docker run test-app) echo "exit_code=1" >> $GITHUB_OUTPUT
+        run: docker run test-app echo "exit_code=1" >> $GITHUB_OUTPUT
+        continue-on-error: true
       - if: ${{ steps.exit.outputs.exit_code == 2 }}
         name: echo res
         run: echo ${{ steps.exit.outputs.exit_code }} 
