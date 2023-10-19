@@ -6,12 +6,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - id: test
-        name: pwd
-        run: $(exit 2) echo "exit_code=$?"  >> $GITHUB_OUTPUT
-        continue-on-error: true
-      - name: echo env
-        run: echo ${{ steps.test.outputs.exit_code }}
-      
-      - if: ${{ steps.test.outputs.exit_code == 2 }}
+        name: docker build
+        # run: $(exit 2); if echo "exit_code=$?"  >> $GITHUB_OUTPUT
+        run: docker build -t test-app . 
+      - id: exit
+        name: docker run 
+        run: docker run test-app; echo "exit_code=$?" >> $GITHUB_OUTPUT 
+      - if: ${{ steps.exit.outputs.exit_code == 2 }}
         name: echo res
-        run: echo yep it is 
+        run: echo ${{ steps.test.outputs.exit_code }} 
