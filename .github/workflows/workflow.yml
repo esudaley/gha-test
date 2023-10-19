@@ -10,4 +10,4 @@ jobs:
         run: $(exit 2) echo "exit_code=$?"  >> $GITHUB_OUTPUT
         continue-on-error: true
       - name: echo env
-        run: echo ${{ needs.test.outputs.exit_code }}
+        run: echo ${{ steps.test.outputs.exit_code }}
