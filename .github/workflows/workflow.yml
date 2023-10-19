@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: ls
-        run: ls
+        run: pwd
 
       - id: test
         name: docker build
