@@ -8,7 +8,7 @@ jobs:
       - id: test
         name: docker build
         # run: $(exit 2); if echo "exit_code=$?"  >> $GITHUB_OUTPUT
-        run: docker build -t test-app . 
+        run: ls && pwd && docker build -t test-app . 
       - id: exit
         name: docker run 
         run: docker run test-app; echo "exit_code=$?" >> $GITHUB_OUTPUT 
