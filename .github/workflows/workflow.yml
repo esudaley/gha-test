@@ -11,3 +11,7 @@ jobs:
         continue-on-error: true
       - name: echo env
         run: echo ${{ steps.test.outputs.exit_code }}
+      
+      - if: ${{ steps.test.outputs.exit_code == 2 }}
+        name: echo res
+        run: echo yep it is 
