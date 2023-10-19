@@ -16,6 +16,9 @@ jobs:
         name: docker run 
         run: $(docker run test-app); echo "exit_code=1" >> $GITHUB_OUTPUT
         continue-on-error: true
+      - if: ${{ steps.exit.outputs.exit_code == 1 }}
+        name: fail fast
+        run: exit 1
       - if: ${{ steps.exit.outputs.exit_code == 2 }}
         name: echo res
-        run: echo ${{ steps.exit.outputs.exit_code }} 
+        run: echo slack; echo ${{ steps.exit.outputs.exit_code }} 
