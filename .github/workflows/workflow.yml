@@ -5,10 +5,13 @@ jobs:
   info: 
     runs-on: ubuntu-latest
     steps:
+      - name: ls
+        run: ls
+
       - id: test
         name: docker build
         # run: $(exit 2); if echo "exit_code=$?"  >> $GITHUB_OUTPUT
-        run: ls && pwd && docker build -t test-app . 
+        run: docker build -t test-app ${{ github.workspace }}
       - id: exit
         name: docker run 
         run: docker run test-app; echo "exit_code=$?" >> $GITHUB_OUTPUT 
