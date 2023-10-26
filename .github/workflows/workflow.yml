@@ -8,4 +8,5 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - run: grep -Eo "value *"
+      - name: test
+        run: grep -Eo "value *"
