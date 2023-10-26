@@ -9,4 +9,4 @@ jobs:
         uses: actions/checkout@v4
 
       - name: test
-        run: grep -Eo "value *" logs.out
+        run: grep -Eo "value.+" logs.out
